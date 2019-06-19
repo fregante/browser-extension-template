@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - 'node'
+env:
+  - EXTENSION_ID='extension id for publising to CWS'
+deploy:
+  provider: script
+  skip_cleanup: true
+  script: npm run release
+  on:
+    # Create a new release
+    #   On cron jobs, or
+    #   When triggered via "Trigger build" on https://travis-ci.org/sindresorhus/refined-github/
+    branch: master
+    condition: (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list -n 1 --since=\"26 hours ago\" master)))

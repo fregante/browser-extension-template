@@ -1,0 +1,20 @@
+html {
+	min-width: 550px;
+	overflow-x: hidden; /* Required to hide horizontal scroll on Firefox */
+}
+
+/* For use with screen readers */
+.sr-only {
+	display: none;
+}
+
+/* Firefox only */
+.only-firefox {
+	display: none;
+}
+
+@-moz-document url-prefix('') {
+	.only-firefox {
+		display: block;
+	}
+}
