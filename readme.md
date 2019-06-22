@@ -14,12 +14,12 @@
 > A template for creating cross-browser browser extensions
 
 ## Features
-- Cross-browser builds using [webextension-polyfill](link-webext-polyfill).
+- Cross-browser builds using [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#auto-publishing) with auto-versioning and support for manual releases.
 - [Extensive configuration documentation](#configuration).
 
-This extension template is heavily inspired from [refined-github](link-rgh), [notifier-for-github](link-ngh), and [hide-files-on-github](link-hfog) browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
+This extension template is heavily inspired from [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
 
 ## Configuration
 
@@ -113,7 +113,7 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 	},
 	```
 
-1. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig](link-tsconfig) (install it as dependecy before using).
+1. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
 
 	``` json
 	{
@@ -128,15 +128,15 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 	}
 	```
 
-TypeScript requires additional configuration depending on how you set it up, like [linting](link-xo-ts).
+TypeScript requires additional configuration depending on how you set it up, like [linting][link-xo-ts].
 
 ### Contentscripts
 
-Contentscripts are CSS and JS code that you inject into each tab of the browser. Instead of manually using the API to tell the browser to inject these scripts, you could use [bfred-it/webext-dynamic-content-scripts](link-dcs) to automatically do this.
+Contentscripts are CSS and JS code that you inject into each tab of the browser. Instead of manually using the API to tell the browser to inject these scripts, you could use [bfred-it/webext-dynamic-content-scripts][link-dcs] to automatically do this.
 
 ### Auto-syncing options
 
-The options page includes [bfred-it/webext-options-sync](link-options-sync) that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
+The options page includes [bfred-it/webext-options-sync][link-options-sync] that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
 
 Refer to the Node modules documentation for more info on how it works.
 
@@ -149,8 +149,8 @@ The included [Travis file](.travis.yml) includes config to test the repo on merg
 
 To setup this auto-publishing, you have to export some API keys from Chrome Web Store (CWS) and Mozilla Extention Store (AMO), and set these as environment variables in your Travis settings.
 
-1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs](link-cws-keys).
-1. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO](link-amo-keys).
+1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
+1. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
 And don't forget to setup a cron job that runs daily on master, and include your CWS extension id in [.travis.yml](.travis.yml).
 
