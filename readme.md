@@ -164,6 +164,12 @@ And don't forget to setup a cron job that runs daily on master, and include your
 
 Whenever you want to create a new release or when the extension is auto-published, the current date and time in the format `[year].[month].[date].[hour-minute]` (for example, `19.6.16.428`) is used as the version number. So that you don't have to manually update this number when a new release is to be made.
 
+#### Releases on Git tags
+
+You can also set up Travis to release extension on Git tags. In this case the version will be same as current Git tag. Automatic daily releases will not be triggered in this case.
+
+To set it up, set environment variable `RELEASE_ON_TAGS` to `true` in [.travis.yml](.travis.yml).
+
 #### Manual releases
 
 Releases to the extension are made from the cron job that runs once a day. If you ever wanted to release a new version, like an immediate bug/security fix, you can use the "Trigger build" button on the Travis build page after making the necessary commits. This will trigger the release script and new version will be published.
