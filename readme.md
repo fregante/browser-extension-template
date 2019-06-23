@@ -23,6 +23,10 @@
 
 This extension template is heavily inspired from [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
 
+## How to use this template
+
+Click <kbd>Use this template</kbd> and make a copy of your own. 😉
+
 ## Configuration
 
 The extension doesn't target any specific ECMAScript environment or provide any transpiling by default. The extensions output will be the same ECMAScript you write. This allows us to always target the latest browser version, which is a good practice you should be following.
