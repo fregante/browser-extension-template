@@ -2,8 +2,8 @@ import optionsStorage from './options-storage';
 
 optionsStorage.syncForm('#options-form');
 
-const rangeInputs = Array.from(document.querySelectorAll('input[type="range"][name^="color"]'));
-const numberInputs = Array.from(document.querySelectorAll('input[type="number"][name^="color"]'));
+const rangeInputs = [...(document.querySelectorAll('input[type="range"][name^="color"]')];
+const numberInputs = [...(document.querySelectorAll('input[type="number"][name^="color"]')];
 const output = document.querySelector('.color-output');
 
 function updateColor() {
