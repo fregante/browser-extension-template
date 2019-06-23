@@ -1,4 +1,4 @@
-const repoUrl = 'https://github.com/awesome-templates/browser-extension-template';
+const repoUrl = 'https://github.com/notlmn/browser-extension-template';
 
 browser.browserAction.onClicked.addListener(() => {
 	browser.tabs.create({

@@ -1,10 +1,14 @@
 import OptionsSync from 'webext-options-sync';
 
 const defaults = {
-	logging: false
+	colorRed: 244,
+	colorGreen: 67,
+	colorBlue: 54
 };
 
-const options = new OptionsSync();
+const options = new OptionsSync({
+	logging: true
+});
 
 options.define({
 	defaults,

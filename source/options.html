@@ -6,11 +6,28 @@
 <form id="options-form" class="detail-view-container">
 	<h2 class="only-firefox">Options</h2>
 
-	<p>
-		<label>
-			<input type="text" name="username" spellcheck="false" autocomplete="off" placeholder="jon.doe"></input>
-		</label>
-	</p>
+	<h3>Color Previewer</h3>
+	<div class="color-picker">
+		<div class="color-inputs">
+			<label class="color-input">
+				<span>R</span>
+				<input type="range" min="0" max="255" name="colorRed">
+				<input type="number" name="colorRed" min="0" max="255"></input>
+			</label>
+			<label class="color-input">
+				<span>G</span>
+				<input type="range" min="0" max="255" name="colorGreen">
+				<input type="number" name="colorGreen" min="0" max="255"></input>
+			</label>
+			<label class="color-input">
+				<span>B</span>
+				<input type="range" min="0" max="255" name="colorBlue">
+				<input type="number" name="colorBlue" min="0" max="255"></input>
+			</label>
+		</div>
+		<div class="color-output">
+		</div>
+	</div>
 </form>
 
 <script src="browser-polyfill.min.js"></script>

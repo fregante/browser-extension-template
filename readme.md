@@ -13,6 +13,8 @@
 
 > A template for creating cross-browser browser extensions
 
+![Sample extension output](media/previewer.png)
+
 ## Features
 - Cross-browser builds using [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
