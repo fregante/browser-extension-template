@@ -2,8 +2,7 @@ language: node_js
 node_js:
   - 'node'
 env:
-  - EXTENSION_ID='extension id for publising to CWS'
-  - RELEASE_ON_TAGS='false'
+  - EXTENSION_ID='extension id for publising to CWS' RELEASE_ON_TAGS='false'
 deploy:
   - provider: script
     skip_cleanup: true
