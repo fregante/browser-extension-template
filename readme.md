@@ -19,6 +19,7 @@
 - Cross-browser builds using [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#auto-publishing) with auto-versioning and support for manual releases.
+- Option to publish on [Git tags](#releases-on-git-tags) instead of auto-publishing.
 - [Extensive configuration documentation](#configuration).
 
 This extension template is heavily inspired from [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
@@ -166,7 +167,13 @@ Whenever you want to create a new release or when the extension is auto-publishe
 
 #### Manual releases
 
-Releases to the extension are made from the cron job that runs once a day. If you ever wanted to release a new version, like an immediate bug/security fix, you can use the "Trigger build" button on the Travis build page after making the necessary commits. This will trigger the release script and new version will be published.
+Releases to the extension are made from the cron job that runs once a day. If you ever wanted to release a new version, like an immediate bug/security fix, you can use the "Trigger build" button on the Travis build page after making the necessary commits. This will trigger the release script and new version will be published with the versioning method mentioned above.
+
+### Releases on Git tags
+
+You can also set up Travis to release extension on Git tags if you don't want the extension to auto-publish itself. In that case the version with which the extension is released will be same as current Git tag.
+
+To set it up, set the environment variable `RELEASE_ON_TAGS` to `true` in [.travis.yml](.travis.yml). In this case, [automatic daily releases](#auto-publishing) and its respective [versioning](#versioning) method will not be triggered.
 
 ### License
 
