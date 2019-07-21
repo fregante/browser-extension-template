@@ -187,6 +187,10 @@ I know, everyone has their own opinion on this one. To keep it simple, copy-past
 
 Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0).
 
+## Extensions created using this template
+
+- [notlmn/copy-as-markdown](https://github.com/notlmn/copy-as-markdown) - Browser extension to copy hyperlinks, images, and selected text as Markdown.
+
 ## License
 
 This template is released under the MIT License by [Laxman](https://github.com/notlmn).
