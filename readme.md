@@ -108,7 +108,7 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 1. Install TypeScript and respective loader for webpack
 
 	``` sh
-	npm i --save-dev typescript ts-loader.
+	npm i --save-dev typescript ts-loader @types/firefox-webext-browser
 	```
 1. Use the following webpack rule in the config file.
 
