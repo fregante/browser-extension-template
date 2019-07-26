@@ -6,8 +6,8 @@
 [link-hfog]: https://github.com/sindresorhus/hide-files-on-github
 [link-tsconfig]: https://github.com/sindresorhus/tsconfig
 [link-xo-ts]: https://github.com/xojs/eslint-config-xo-typescript
-[link-dcs]: https://github.com/bfred-it/webext-dynamic-content-scripts
-[link-options-sync]: https://github.com/bfred-it/webext-options-sync
+[link-dcs]: https://github.com/fregante/webext-dynamic-content-scripts
+[link-options-sync]: https://github.com/fregante/webext-options-sync
 [link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
@@ -139,11 +139,11 @@ TypeScript requires additional configuration depending on how you set it up, lik
 
 ### Contentscripts
 
-Contentscripts are CSS and JS code that you inject into each tab of the browser. Instead of manually using the API to tell the browser to inject these scripts, you could use [bfred-it/webext-dynamic-content-scripts][link-dcs] to automatically do this.
+Contentscripts are CSS and JS code that you inject into each tab of the browser. Instead of manually using the API to tell the browser to inject these scripts, you could use [fregante/webext-dynamic-content-scripts][link-dcs] to automatically do this.
 
 ### Auto-syncing options
 
-The options page includes [bfred-it/webext-options-sync][link-options-sync] that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
+The options page includes [fregante/webext-options-sync][link-options-sync] that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
 
 Refer to the Node modules documentation for more info on how it works.
 
