@@ -1,15 +1,15 @@
 language: node_js
 node_js:
-  - 'node'
+  - stable
 env:
-  - EXTENSION_ID='000000000000000000000000000000000' # Extension ID assigned by the Chrome Web Store
+   # Extension ID assigned by the Chrome Web Store
+  - EXTENSION_ID='000000000000000000000000000000000'
 deploy:
   - provider: script
     skip_cleanup: true
     script: npm run release
     on:
-      # Create a new release
-      #   On cron jobs, or
-      #   When triggered via "Trigger build" on Travis
+      # On cron jobs https://docs.travis-ci.com/user/cron-jobs/
+      # When clicking "Trigger build" https://blog.travis-ci.com/2017-08-24-trigger-custom-build
       branch: master
       condition: (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list -n 1 --since=\"26 hours ago\" master)))
