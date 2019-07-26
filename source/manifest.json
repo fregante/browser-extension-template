@@ -17,10 +17,6 @@
 	"permissions": [
 		"storage"
 	],
-	"optional_permissions": [],
-	"browser_action": {
-		"default_icon": "icon.png"
-	},
 	"options_ui": {
 		"chrome_style": true,
 		"page": "options.html"
