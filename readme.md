@@ -97,7 +97,7 @@ If you will be writing any code that will be importing CSS files from JS files, 
 
 	// Under `plugins`
 	new MiniCssExtractPlugin({
-		filename: 'features.css'
+		filename: 'content.css'
 	})
 	```
 
