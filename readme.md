@@ -10,22 +10,23 @@
 [link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
-> A template for creating cross-browser browser extensions
+> Barebones boilerplate with webpack, options handler and auto-publishing.
 
 ![Sample extension output](media/previewer.png)
 
 ## Features
-- Cross-browser builds using [webextension-polyfill][link-webext-polyfill].
+
+- Use modern Promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#auto-publishing) with auto-versioning and support for manual releases.
 - Option to publish on [Git tags](#releases-on-git-tags) instead of auto-publishing.
 - [Extensive configuration documentation](#configuration).
 
-This extension template is heavily inspired from [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
+This extension template is heavily inspired by [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
 
 ## How to use this template
 
-Click <kbd>Use this template</kbd> and make a copy of your own. 😉
+Click [<kbd>Use this template</kbd>](https://github.com/notlmn/browser-extension-template/generate) and make a copy of your own. 😉
 
 ## Configuration
 
