@@ -6,7 +6,6 @@
 [link-hfog]: https://github.com/sindresorhus/hide-files-on-github
 [link-tsconfig]: https://github.com/sindresorhus/tsconfig
 [link-xo-ts]: https://github.com/xojs/eslint-config-xo-typescript
-[link-dcs]: https://github.com/fregante/webext-dynamic-content-scripts
 [link-options-sync]: https://github.com/fregante/webext-options-sync
 [link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
