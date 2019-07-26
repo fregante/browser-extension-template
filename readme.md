@@ -162,8 +162,8 @@ npm run release
 This will:
 
 1. Build the extension
-2. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/LinusU/utc-version#utc-version) and sets it in the manifest.json
-3. Deploy it to both stores
+1. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/LinusU/utc-version#utc-version) and sets it in the manifest.json
+1. Deploy it to both stores
 
 #### Auto-publishing
 
@@ -176,7 +176,7 @@ Thanks to the included [Travis file](.travis.yml), if you set up those ENVs on T
 
 If you prefer picking your versions and publishing on demand, replace the deployment in [Travis file](.travis.yml) with:
 
-```yml
+``` yml
   - provider: script
     skip_cleanup: true
     script: npm run release
@@ -186,7 +186,7 @@ If you prefer picking your versions and publishing on demand, replace the deploy
 
 And then replace the `prerelease:version` script in [package.json](package.json) with:
 
-```json
+``` json
 "prerelease:version": "dot-json distribution/manifest.json version $TRAVIS_TAG",
 ```
 
