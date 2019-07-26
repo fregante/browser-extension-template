@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 'node'
 env:
-  - EXTENSION_ID='extension id for publising to CWS' RELEASE_ON_TAGS='false'
+  - EXTENSION_ID='extension id for publising to CWS'
 deploy:
   - provider: script
     skip_cleanup: true
@@ -10,14 +10,6 @@ deploy:
     on:
       # Create a new release
       #   On cron jobs, or
-      #   When triggered via "Trigger build"
+      #   When triggered via "Trigger build" on Travis
       branch: master
-      condition: ($RELEASE_ON_TAGS = false && (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list -n 1 --since="26 hours ago" master))))
-  - provider: script
-    skip_cleanup: true
-    script: npm run release
-    on:
-      # Create a new release
-      #   On Git tags
-      tags: true
-      condition: $RELEASE_ON_TAGS = true
+      condition: ($TRAVIS_EVENT_TYPE = api || $TRAVIS_EVENT_TYPE = cron) && ($(git tag -l --points-at HEAD) = "")
