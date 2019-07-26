@@ -190,7 +190,7 @@ And then replace the `prerelease:version` script in [package.json](package.json)
 "prerelease:version": "dot-json distribution/manifest.json version $TRAVIS_TAG",
 ```
 
-And your extension will be published when creating a git tag, using the tag itself as version for the manifest.
+And your extension will be published when creating a git tag, using the tag itself as version for the extension.
 
 ### License
 
