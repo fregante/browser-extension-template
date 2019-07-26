@@ -18,8 +18,7 @@
 ## Features
 - Cross-browser builds using [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
-- [Auto-publishing](#auto-publishing) with auto-versioning and support for manual releases.
-- Option to publish on [Git tags](#releases-on-git-tags) instead of auto-publishing.
+- [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
 - [Extensive configuration documentation](#configuration).
 
 This extension template is heavily inspired from [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
