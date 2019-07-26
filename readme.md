@@ -137,10 +137,6 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 
 TypeScript requires additional configuration depending on how you set it up, like [linting][link-xo-ts].
 
-### Contentscripts
-
-Contentscripts are CSS and JS code that you inject into each tab of the browser. Instead of manually using the API to tell the browser to inject these scripts, you could use [fregante/webext-dynamic-content-scripts][link-dcs] to automatically do this.
-
 ### Auto-syncing options
 
 The options page includes [fregante/webext-options-sync][link-options-sync] that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
