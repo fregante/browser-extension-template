@@ -143,9 +143,7 @@ Contentscripts are CSS and JS code that you inject into each tab of the browser.
 
 ### Auto-syncing options
 
-The options page includes [fregante/webext-options-sync][link-options-sync] that syncs all input values includes in the form element as they change. These changes are reflected across all the browser instances for the extension if you are logged into the browser using Google account on Chrome or Firefox account on Firefox.
-
-Refer to the Node modules documentation for more info on how it works.
+Options are managed by [fregante/webext-options-sync][link-options-sync], which auto-saves and auto-restores the options form, applies defaults and runs migrations.
 
 ### Auto-publishing
 
