@@ -155,7 +155,7 @@ It's possible to publish to both the Chrome Web Store and Mozilla Addons at once
 
 And then running:
 
-```sh
+``` sh
 npm run release
 ```
 
