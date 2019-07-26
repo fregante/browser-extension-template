@@ -1,23 +1,15 @@
 language: node_js
 node_js:
-  - 'node'
+  - stable
 env:
-  - EXTENSION_ID='extension id for publising to CWS' RELEASE_ON_TAGS='false'
+   # Extension ID assigned by the Chrome Web Store
+  - EXTENSION_ID='000000000000000000000000000000000'
 deploy:
   - provider: script
     skip_cleanup: true
     script: npm run release
     on:
-      # Create a new release
-      #   On cron jobs, or
-      #   When triggered via "Trigger build"
+      # On cron jobs https://docs.travis-ci.com/user/cron-jobs/
+      # When clicking "Trigger build" https://blog.travis-ci.com/2017-08-24-trigger-custom-build
       branch: master
-      condition: ($RELEASE_ON_TAGS = false && (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list -n 1 --since="26 hours ago" master))))
-  - provider: script
-    skip_cleanup: true
-    script: npm run release
-    on:
-      # Create a new release
-      #   On Git tags
-      tags: true
-      condition: $RELEASE_ON_TAGS = true
+      condition: (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list --since=yesterday HEAD)))

@@ -18,8 +18,7 @@
 
 - Use modern Promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
-- [Auto-publishing](#auto-publishing) with auto-versioning and support for manual releases.
-- Option to publish on [Git tags](#releases-on-git-tags) instead of auto-publishing.
+- [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
 - [Extensive configuration documentation](#configuration).
 
 This extension template is heavily inspired by [refined-github][link-rgh], [notifier-for-github][link-ngh], and [hide-files-on-github][link-hfog] browser extensions. You can always refer to these browser extensions' source code if you find anything confusing on how to create a new extension.
@@ -141,33 +140,51 @@ TypeScript requires additional configuration depending on how you set it up, lik
 
 Options are managed by [fregante/webext-options-sync][link-options-sync], which auto-saves and auto-restores the options form, applies defaults and runs migrations.
 
-### Auto-publishing
+### Publishing
 
-The included [Travis file](.travis.yml) includes config to test the repo on merges to master and includes as deplpyment script to create and publish a new version of the extension only if the following conditions are met
-
-1. If the Travis build is triggered using the "Trigger build" button on the Travis website, this allows for [manual releases](#manual-releases).
-2. Or if the Travis build is part of a cron job and only there are any commits in the last 26 hours.
-
-To setup this auto-publishing, you have to export some API keys from Chrome Web Store (CWS) and Mozilla Extention Store (AMO), and set these as environment variables in your Travis settings.
+It's possible to publish to both the Chrome Web Store and Mozilla Addons at once by creating these ENV variables:
 
 1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
 1. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
-And don't forget to setup a cron job that runs daily on master, and include your CWS extension id in [.travis.yml](.travis.yml).
+And then running:
 
-#### Versioning
+``` sh
+npm run release
+```
 
-Whenever you want to create a new release or when the extension is auto-published, the current date and time in the format `[year].[month].[date].[hour-minute]` (for example, `19.6.16.428`) is used as the version number. So that you don't have to manually update this number when a new release is to be made.
+This will:
 
-#### Manual releases
+1. Build the extension
+1. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/LinusU/utc-version#utc-version) and sets it in the manifest.json
+1. Deploy it to both stores
 
-Releases to the extension are made from the cron job that runs once a day. If you ever wanted to release a new version, like an immediate bug/security fix, you can use the "Trigger build" button on the Travis build page after making the necessary commits. This will trigger the release script and new version will be published with the versioning method mentioned above.
+#### Auto-publishing
 
-### Releases on Git tags
+Thanks to the included [Travis file](.travis.yml), if you set up those ENVs on Travis, the deployment will automatically happen:
 
-You can also set up Travis to release extension on Git tags if you don't want the extension to auto-publish itself. In that case the version with which the extension is released will be same as current Git tag.
+- when clicking ["Trigger build"](https://blog.travis-ci.com/2017-08-24-trigger-custom-build)
+- every day, if you configure the [Cron Job](https://docs.travis-ci.com/user/cron-jobs/) (but only if there are any new commits in the last day)
 
-To set it up, set the environment variable `RELEASE_ON_TAGS` to `true` in [.travis.yml](.travis.yml). In this case, [automatic daily releases](#auto-publishing) and its respective [versioning](#versioning) method will not be triggered.
+#### Auto-publishing on tags
+
+If you prefer picking your versions and publishing on demand, replace the deployment in [Travis file](.travis.yml) with:
+
+``` yml
+  - provider: script
+    skip_cleanup: true
+    script: npm run release
+    on:
+      tags: true
+```
+
+And then replace the `prerelease:version` script in [package.json](package.json) with:
+
+``` json
+"prerelease:version": "dot-json distribution/manifest.json version $TRAVIS_TAG",
+```
+
+And your extension will be published when creating a git tag, using the tag itself as version for the extension.
 
 ### License
 
