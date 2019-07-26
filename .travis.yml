@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - 'node'
 env:
-  - EXTENSION_ID='extension id for publising to CWS'
+  - EXTENSION_ID='000000000000000000000000000000000' # Extension ID assigned by the Chrome Web Store
 deploy:
   - provider: script
     skip_cleanup: true
@@ -12,4 +12,4 @@ deploy:
       #   On cron jobs, or
       #   When triggered via "Trigger build" on Travis
       branch: master
-      condition: ($TRAVIS_EVENT_TYPE = api || $TRAVIS_EVENT_TYPE = cron) && ($(git tag -l --points-at HEAD) = "")
+      condition: (($TRAVIS_EVENT_TYPE = api) || ($TRAVIS_EVENT_TYPE = cron && $(git rev-list -n 1 --since=\"26 hours ago\" master)))
