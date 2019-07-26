@@ -177,10 +177,6 @@ To set it up, set the environment variable `RELEASE_ON_TAGS` to `true` in [.trav
 
 This browser extension template is released under [MIT](#license) and mentioned below. There is no `license` file included in here, but when you clone this template, you should include your own license file for the specific license you choose to use.
 
-### Tests
-
-I know, everyone has their own opinion on this one. To keep it simple, copy-paste tests and their configuration from the extension projects mentioned at the start of this document. End of story.
-
 ## Credits
 
 Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com) is licensed by [CC 3.0 BY](http://creativecommons.org/licenses/by/3.0).
