@@ -66,4 +66,4 @@ jobs:
     - uses: fregante/setup-git-token@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    - run: VER=$(cat distribution/version.txt); echo $VER; git tag $VER -m $VER && git push origin $VER
+    - run: VER=$(cat distribution/version.txt); echo $VER; git tag $VER -m $VER && echo git push origin $VER # TODO: drop `echo` before merging
