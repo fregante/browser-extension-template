@@ -1,0 +1,20 @@
+# This workflow will create a `deploy` tag every day, if new commits are available since the last tag
+
+name: Daily deployment check
+
+# on:
+#  schedule:
+#    - cron: '13 13 * * *' # TODO: restore before merging
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - uses: fregante/setup-git-token@v1
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        if [[ $(git tag -l --points-at HEAD) = "" ]]; then
+            git push origin HEAD:refs/tags/deploy
+        fi
