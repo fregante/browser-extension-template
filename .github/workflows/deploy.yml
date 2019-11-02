@@ -44,6 +44,11 @@ jobs:
         name: built-extension
         path: distribution
     - run: cd distribution && echo npx chrome-webstore-upload-cli upload --auto-publish # TODO: drop `echo` before merging
+      env:
+        EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
+        CLIENT_ID: ${{ secrets.CLIENT_ID }}
+        CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+        REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 
   deploy-to-firefox:
     needs: build
@@ -54,6 +59,9 @@ jobs:
         name: built-extension
         path: distribution
     - run: cd distribution && echo npx web-ext-submit # TODO: drop `echo` before merging
+      env:
+        WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
+        WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
 
   tag:
     needs: 
