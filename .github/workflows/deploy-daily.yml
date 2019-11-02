@@ -2,9 +2,10 @@
 
 name: Daily deployment check
 
-# on:
-#  schedule:
-#    - cron: '13 13 * * *' # TODO: restore before merging
+on:
+  schedule:
+    - cron: '10 10 10 10 10'
+    # - cron: '13 13 * * *' # TODO: restore before merging
 
 jobs:
   create-tag:
