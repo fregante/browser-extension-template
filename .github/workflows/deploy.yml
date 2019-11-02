@@ -14,7 +14,7 @@ jobs:
     - uses: fregante/setup-git-token@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
-    # - run: git push --delete origin deploy # TODO: restore before merging
+    - run: echo git push --delete origin deploy  # TODO: drop `echo` before merging
 
   build:
     needs: delete-tag
@@ -24,8 +24,12 @@ jobs:
     - run: npm install
     - run: npm test
     - run: npm run build
-    - run: ./node_modules/.bin/daily-version | tee distribution/version.txt # there's no way to share env variables between steps
-    - run: VER=$(cat distribution/version.txt) ./node_modules/.bin/run-p prerelease:* # to be inlined, probably
+    - name: Version
+      run: |
+        export VER=$(npx daily-version)
+        echo $VER | tee distribution/version.txt
+        echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
+        npm run version
     - uses: actions/upload-artifact@v1
       with:
         name: built-extension
@@ -62,7 +66,7 @@ jobs:
       with:
         name: built-extension
         path: distribution
-    - run: du -a # List all available files
+    - run: du -a # Log all available files
     - uses: fregante/setup-git-token@v1
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
