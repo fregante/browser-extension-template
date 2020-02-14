@@ -7,26 +7,27 @@ on: push
 
 jobs:
 
-  delete-tag:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - run: echo git push --delete origin deploy  # TODO: drop `echo` before merging
-
-  build:
-    needs: delete-tag
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
     - run: npm install
     - run: npm test
-    - run: npm run build
+    - run: du -a # Log all available files # TODO: maybe remove
     - name: Version
       run: |
         export VER=$(npx daily-version)
-        echo $VER | tee distribution/version.txt
+        echo $VER
         echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
         npm run version
+    - name: Tag
+      run: |
+        git config user.name "GitHub Actions"
+        git config user.email "actions@users.noreply.github.com"
+        git tag $VER -m $VER
+        echo git push origin $VER # TODO: drop `echo` before merging
+      
     - uses: actions/upload-artifact@v1
       with:
         name: built-extension
@@ -59,17 +60,3 @@ jobs:
       env:
         WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
         WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
-
-  tag:
-    needs: 
-    - deploy-to-chrome
-    - deploy-to-firefox
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-    - uses: actions/download-artifact@v1
-      with:
-        name: built-extension
-        path: distribution
-    - run: du -a # Log all available files
-    - run: VER=$(cat distribution/version.txt); echo $VER; git tag $VER -m $VER && echo git push origin $VER # TODO: drop `echo` before merging
