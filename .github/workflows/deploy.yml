@@ -15,14 +15,13 @@ jobs:
     - run: npm install
     - run: npm test
     - run: du -a # Log all available files # TODO: maybe remove
-    - name: Version
+    - name: Version and tag
       run: |
         export VER=$(npx daily-version)
         echo $VER
         echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
         npm run version
-    - name: Tag
-      run: |
+        
         git config user.name "GitHub Actions"
         git config user.email "actions@users.noreply.github.com"
         git tag $VER -m $VER
