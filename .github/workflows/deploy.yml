@@ -10,17 +10,14 @@ jobs:
   delete-tag:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
-    - uses: fregante/setup-git-token@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: actions/checkout@v2
     - run: echo git push --delete origin deploy  # TODO: drop `echo` before merging
 
   build:
     needs: delete-tag
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - run: npm install
     - run: npm test
     - run: npm run build
@@ -69,13 +66,10 @@ jobs:
     - deploy-to-firefox
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - uses: actions/download-artifact@v1
       with:
         name: built-extension
         path: distribution
     - run: du -a # Log all available files
-    - uses: fregante/setup-git-token@v1
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
     - run: VER=$(cat distribution/version.txt); echo $VER; git tag $VER -m $VER && echo git push origin $VER # TODO: drop `echo` before merging
