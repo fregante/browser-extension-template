@@ -1,9 +1,13 @@
 name: Deployment
 
-on: push 
-#   push:
-#     tags:
-#       - deploy # TODO: restore before merging
+on:
+  push:
+    tags:
+      - "20.*"
+      - "21.*"
+      - "22.*"
+      - "23.*"
+      - "24.*"
 
 jobs:
 
@@ -11,22 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - run: echo git push --delete origin deploy  # TODO: drop `echo` before merging
     - run: npm install
     - run: npm test
     - run: du -a # Log all available files # TODO: maybe remove
     - name: Version and tag
       run: |
-        export VER=$(npx daily-version)
-        echo $VER
         echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
         npm run version
-        
-        git config user.name "GitHub Actions"
-        git config user.email "actions@users.noreply.github.com"
-        git tag $VER -m $VER
-        echo git push origin $VER # TODO: drop `echo` before merging
-      
     - uses: actions/upload-artifact@v1
       with:
         name: built-extension

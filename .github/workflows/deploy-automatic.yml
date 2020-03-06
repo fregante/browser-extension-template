@@ -1,0 +1,28 @@
+# If new commits are available since the last tag, create a new version/tag
+# - Every day at 13:13
+# - Manually, if the user creates a `deploy` tag
+
+name: Auto-tagger
+
+on:
+  push:
+    tags:
+      - deploy
+#  schedule:
+#    - cron: '13 13 * * *' # TODO: restore before merging
+
+jobs:
+  create-version:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: fregante/setup-git-token@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          git push --delete origin deploy
+          if [[ $(git tag -l --points-at HEAD) = "" ]]; then
+            export VER=$(npx daily-version)
+            git tag $VER -m $VER
+            git push origin $VER
+          fi
