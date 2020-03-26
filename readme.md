@@ -156,39 +156,20 @@ npm run release
 This will:
 
 1. Build the extension
-1. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/LinusU/utc-version#utc-version) and sets it in the manifest.json
+1. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/fregante/daily-version) and sets it in the manifest.json
 1. Deploy it to both stores
 
 #### Auto-publishing
 
-Thanks to the included [Travis file](.travis.yml), if you set up those ENVs on Travis, the deployment will automatically happen:
+Thanks to the included [GitHub Action Workflows](.github/workflows), if you set up those ENVs in the repo's Settings, the deployment will automatically happen:
 
-- when clicking ["Trigger build"](https://blog.travis-ci.com/2017-08-24-trigger-custom-build)
-- every day, if you configure the [Cron Job](https://docs.travis-ci.com/user/cron-jobs/) (but only if there are any new commits in the last day)
-
-#### Auto-publishing on tags
-
-If you prefer picking your versions and publishing on demand, replace the deployment in [Travis file](.travis.yml) with:
-
-``` yml
-  - provider: script
-    skip_cleanup: true
-    script: npm run release
-    on:
-      tags: true
-```
-
-And then replace the `prerelease:version` script in [package.json](package.json) with:
-
-``` json
-"prerelease:version": "dot-json distribution/manifest.json version $TRAVIS_TAG",
-```
-
-And your extension will be published when creating a git tag, using the tag itself as version for the extension.
+- when creating a `deploy` tag (it will use the current date/time as version, like [`19.6.16.428`](hhttps://github.com/fregante/daily-version))
+- when creating a specific version tag based on the same date format (like `20.1.2` or `20.1.2.3`)
+- on a schedule, by default [every week](.github/workflows/deploy-automatic.yml) (but only if there are any new commits in the last tag)
 
 ### License
 
-This browser extension template is released under [MIT](#license) and mentioned below. There is no `license` file included in here, but when you clone this template, you should include your own license file for the specific license you choose to use.
+This browser extension template is released under [CC0](#license) and mentioned below. There is no `license` file included in here, but when you clone this template, you should include your own license file for the specific license you choose to use.
 
 ## Credits
 
