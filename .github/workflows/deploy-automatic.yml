@@ -9,7 +9,7 @@ on:
     tags:
       - deploy
 #  schedule:
-#    - cron: '13 13 * * *' # TODO: restore before merging
+#    - cron: '13 13 * * 3' # TODO: restore before merging
 
 jobs:
   create-version:
