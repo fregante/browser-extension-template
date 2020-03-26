@@ -1,15 +1,12 @@
-# If new commits are available since the last tag, create a new version/tag
-# - Every day at 13:13
-# - Manually, if the user creates a `deploy` tag
-
+# Automatically create a new version/tag, if new commits are available since the last tag
 name: Auto-tagger
 
 on:
   push:
     tags:
       - deploy
-#  schedule:
-#    - cron: '13 13 * * 3' # TODO: restore before merging
+  schedule:
+    - cron: '13 13 * * 3'
 
 jobs:
   create-version:
