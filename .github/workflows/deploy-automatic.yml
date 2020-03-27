@@ -2,9 +2,6 @@
 name: Auto-tagger
 
 on:
-  push:
-    tags:
-      - deploy
   schedule:
     - cron: '13 13 * * 3'
 
@@ -17,7 +14,6 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
       - run: |
-          git push --delete origin deploy
           if [[ $(git tag -l --points-at HEAD) = "" ]]; then
             export VER=$(npx daily-version)
             git tag $VER -m $VER
