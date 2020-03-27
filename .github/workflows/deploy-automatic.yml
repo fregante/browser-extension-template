@@ -3,7 +3,7 @@ name: Auto-tagger
 
 on:
   schedule:
-    - cron: '13 13 * * 3'
+    - cron: '31 13 * * 3' # Every Wednesday at 13:31 https://crontab.guru/#31_13_*_*_3
 
 jobs:
   create-version:
