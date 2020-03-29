@@ -8,15 +8,15 @@
 		"test": "run-s lint:* build",
 		"build": "webpack --mode=production",
 		"watch": "webpack --mode=development --watch",
-		"prerelease:version": "VERSION=$(utc-version); echo $VERSION; dot-json distribution/manifest.json version $VERSION",
-		"prerelease:source-url": "if [ ! -z \"${TRAVIS_REPO_SLUG}\" ]; then echo https://github.com/$TRAVIS_REPO_SLUG/tree/\"${TRAVIS_TAG:-$TRAVIS_COMMIT}\" > distribution/SOURCE_URL; fi",
-		"release": "npm-run-all build prerelease:* release:*",
+		"version": "dot-json distribution/manifest.json version $VER",
 		"release:cws": "webstore upload --source=distribution --auto-publish",
-		"release:amo": "web-ext-submit --source-dir distribution"
+		"release:amo": "web-ext-submit --source-dir distribution",
+		"release": "VER=$(daily-version) run-s build version release:*"
 	},
 	"devDependencies": {
 		"chrome-webstore-upload-cli": "^1.2.0",
 		"copy-webpack-plugin": "^5.0.3",
+		"daily-version": "^0.12.0",
 		"dot-json": "^1.1.0",
 		"eslint": "^6.1.0",
 		"eslint-config-xo": "^0.26.0",
@@ -25,9 +25,8 @@
 		"stylelint": "^10.1.0",
 		"stylelint-config-xo": "^0.15.0",
 		"terser-webpack-plugin": "^1.3.0",
-		"utc-version": "^2.0.1",
-		"web-ext": "^3.1.1",
-		"web-ext-submit": "^3.1.1",
+		"web-ext": "^4.1.0",
+		"web-ext-submit": "^4.1.0",
 		"webpack": "^4.36.1",
 		"webpack-cli": "^3.3.6",
 		"xo": "^0.24.0"
