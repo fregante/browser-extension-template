@@ -47,7 +47,7 @@ jobs:
     steps:
     - uses: actions/download-artifact@v1
       with:
-        path: distribution
+        name: distribution
     - run: cd distribution && npx web-ext-submit@4
       env:
         WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
