@@ -25,7 +25,7 @@ jobs:
         run: |
           git fetch --tags
           if [[ $(git tag -l --points-at HEAD) = '' ]]; then
-            echo '::set-output name=created::tre'
+            echo '::set-output name=created::yes'
             export VER=$(npx daily-version)
             git tag $VER -m $VER
             git push origin $VER
