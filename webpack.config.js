@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-	devtool: 'sourcemap',
+	devtool: 'source-map',
 	stats: 'errors-only',
 	entry: {
 		background: './source/background',
