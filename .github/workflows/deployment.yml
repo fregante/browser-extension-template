@@ -22,14 +22,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create tag if necessary
         if: github.event_name == 'schedule'
-        run: |
-          git fetch --tags
-          if [[ $(git tag -l --points-at HEAD) = '' ]]; then
-            echo '::set-output name=created::yes'
-            export VER=$(npx daily-version)
-            git tag $VER -m $VER
-            git push origin $VER
-          fi
+        uses: fregante/daily-version-action@v1
 
   Build:
     needs: Version
