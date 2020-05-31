@@ -2,7 +2,7 @@ name: Deployment
 
 on:
   schedule:
-    - cron: '31 13 * * 3' # Every Wednesday at 13:31 https://crontab.guru/#31_13_*_*_3
+    - cron: '31 13 * * 3'
   push:
     tags:
       - "20.*"
@@ -17,11 +17,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: fregante/setup-git-token@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
       - name: Create tag if necessary
-        if: github.event_name == 'schedule'
         uses: fregante/daily-version-action@v1
 
   Build:
