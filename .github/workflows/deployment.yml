@@ -38,7 +38,7 @@ jobs:
       with:
         path: distribution
 
-  For Chrome:
+  Chrome:
     needs: Build
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +50,7 @@ jobs:
         CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
         REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
 
-  For Firefox:
+  Firefox:
     needs: Build
     runs-on: ubuntu-latest
     steps:
