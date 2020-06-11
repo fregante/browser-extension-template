@@ -20,6 +20,8 @@ jobs:
       created: ${{ steps.daily-version.outputs.created }}
     steps:
       - uses: actions/checkout@v2
+      - run: npm install
+      - run: npm test
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
@@ -31,7 +33,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - run: npm install
-    - run: npm test
+    - run: npm run build
     - name: Update extension’s meta
       env:
         VER: ${{ needs.Version.outputs.version }}
