@@ -26,7 +26,7 @@ jobs:
       id: daily-version
     - name: Update extension’s meta
       env:
-        VER: ${{ needs.Version.outputs.version }}
+        VER: ${{ steps.daily-version.outputs.version }}
       run: |
         echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
         npm run version
