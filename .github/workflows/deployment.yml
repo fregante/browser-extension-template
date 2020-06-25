@@ -13,28 +13,20 @@ on:
 
 jobs:
 
-  Version:
-    runs-on: ubuntu-latest
-    outputs:
-      version: ${{ steps.daily-version.outputs.version }}
-      created: ${{ steps.daily-version.outputs.created }}
-    steps:
-      - uses: actions/checkout@v2
-      - uses: fregante/daily-version-action@v1
-        name: Create tag if necessary
-        id: daily-version
-
   Build:
-    needs: Version
-    if: github.event_name == 'push' || needs.Version.outputs.created
+    outputs:
+      created: ${{ steps.daily-version.outputs.created }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
     - run: npm install
-    - run: npm test
+    - run: npm test # This includes the build
+    - uses: fregante/daily-version-action@v1
+      name: Create tag if necessary
+      id: daily-version
     - name: Update extension’s meta
       env:
-        VER: ${{ needs.Version.outputs.version }}
+        VER: ${{ steps.daily-version.outputs.version }}
       run: |
         echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL
         npm run version
@@ -44,6 +36,7 @@ jobs:
 
   Chrome:
     needs: Build
+    if: github.event_name == 'push' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
@@ -56,6 +49,7 @@ jobs:
 
   Firefox:
     needs: Build
+    if: github.event_name == 'push' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
