@@ -163,9 +163,8 @@ This will:
 
 Thanks to the included [GitHub Action Workflows](.github/workflows), if you set up those ENVs in the repo's Settings, the deployment will automatically happen:
 
-- when creating a `deploy` tag (it will use the current date/time as version, like [`19.6.16.428`](hhttps://github.com/fregante/daily-version))
-- when creating a specific version tag based on the same date format (like `20.1.2` or `20.1.2.3`)
 - on a schedule, by default [every week](.github/workflows/deploy-automatic.yml) (but only if there are any new commits in the last tag)
+- manually, by clicking ["Run workflow"](https://github.blog/changelog/2020-07-06-github-actions-manual-triggers-with-workflow_dispatch/) in the Actions tab.
 
 ### License
 
