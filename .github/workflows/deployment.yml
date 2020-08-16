@@ -33,7 +33,7 @@ jobs:
 
   Chrome:
     needs: Build
-    if: github.event_name == 'push' || needs.Build.outputs.created
+    if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
@@ -46,7 +46,7 @@ jobs:
 
   Firefox:
     needs: Build
-    if: github.event_name == 'push' || needs.Build.outputs.created
+    if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
     runs-on: ubuntu-latest
     steps:
     - uses: actions/download-artifact@v2
