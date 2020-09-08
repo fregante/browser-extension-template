@@ -1,17 +1,35 @@
 {
 	"private": true,
 	"scripts": {
-		"lint": "run-p lint:*",
-		"lint:js": "xo",
-		"lint:css": "stylelint source/**/*.css",
-		"lint-fix": "run-p 'lint:* -- --fix'",
-		"test": "run-s lint:* build",
 		"build": "webpack --mode=production",
-		"watch": "webpack --mode=development --watch",
-		"version": "dot-json distribution/manifest.json version $VER",
-		"release:cws": "webstore upload --source=distribution --auto-publish",
+		"lint": "run-p lint:*",
+		"lint-fix": "run-p 'lint:* -- --fix'",
+		"lint:css": "stylelint source/**/*.css",
+		"lint:js": "xo",
+		"release": "VER=$(daily-version) run-s build version release:*",
 		"release:amo": "web-ext-submit --source-dir distribution",
-		"release": "VER=$(daily-version) run-s build version release:*"
+		"release:cws": "webstore upload --source=distribution --auto-publish",
+		"test": "run-s lint:* build",
+		"version": "dot-json distribution/manifest.json version $VER",
+		"watch": "webpack --mode=development --watch"
+	},
+	"xo": {
+		"envs": [
+			"browser"
+		],
+		"globals": [
+			"browser"
+		],
+		"ignores": [
+			"distribution"
+		]
+	},
+	"stylelint": {
+		"extends": "stylelint-config-xo"
+	},
+	"dependencies": {
+		"webext-options-sync": "^0.21.2",
+		"webextension-polyfill": "^0.4.0"
 	},
 	"devDependencies": {
 		"chrome-webstore-upload-cli": "^1.2.0",
@@ -30,23 +48,5 @@
 		"webpack": "^4.36.1",
 		"webpack-cli": "^3.3.6",
 		"xo": "^0.24.0"
-	},
-	"dependencies": {
-		"webext-options-sync": "^0.21.2",
-		"webextension-polyfill": "^0.4.0"
-	},
-	"xo": {
-		"envs": [
-			"browser"
-		],
-		"ignores": [
-			"distribution"
-		],
-		"globals": [
-			"browser"
-		]
-	},
-	"stylelint": {
-		"extends": "stylelint-config-xo"
 	}
 }
