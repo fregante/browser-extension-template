@@ -1,0 +1,24 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - '20.*'
+      - '21.*'
+      - '22.*'
+      - '23.*'
+      - '24.*'
+
+jobs:
+  Release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 20
+      - uses: notlmn/release-with-changelog@run-anywhere
+        with:
+          header: '### Changelog'
+          include-hash: true
+          include-range: true
+          token: ${{ secrets.GITHUB_TOKEN }}
