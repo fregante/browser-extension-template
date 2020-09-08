@@ -39,36 +39,41 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 
 1. Install Babel packages and respective loader for webpack.
 
-	``` sh
-	npm i --save-dev @babel/core @babel/preset-env babel-loader
-	```
+   ```sh
+   npm i --save-dev @babel/core @babel/preset-env babel-loader
+   ```
+
 1. In `webpack.config.js`, add the following rule to process JS files.
 
-	``` js
-	module: {
-		rules: [
-			{
-				test: /\.js$/,
-				exclude: /node_modules/,
-				loader: 'babel-loader'
-			}
-		]
-	}
-	```
+   ```js
+   module: {
+   	rules: [
+   		{
+   			test: /\.js$/,
+   			exclude: /node_modules/,
+   			loader: 'babel-loader',
+   		},
+   	];
+   }
+   ```
+
 1. Target respective browsers using `.babelrc`.
 
-	``` json
-	{
-		"presets": [
-			["@babel/preset-env", {
-				"targets": {
-					"chrome": "74",
-					"firefox": "67"
-				}
-			}]
-		]
-	}
-	```
+   ```json
+   {
+   	"presets": [
+   		[
+   			"@babel/preset-env",
+   			{
+   				"targets": {
+   					"chrome": "74",
+   					"firefox": "67"
+   				}
+   			}
+   		]
+   	]
+   }
+   ```
 
 #### Extracting CSS
 
@@ -76,29 +81,30 @@ If you will be writing any code that will be importing CSS files from JS files, 
 
 1. Install the webpack plugin.
 
-	``` sh
-	npm i --save-dev mini-css-extract-plugin
-	```
+   ```sh
+   npm i --save-dev mini-css-extract-plugin
+   ```
+
 1. Modify the webpack config as mentioned to let this plugin handle CSS imports.
 
-	``` js
-	// Import plugin
-	const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+   ```js
+   // Import plugin
+   const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-	// Under `module.rules`
-	{
-		test: /\.css$/,
-		use: [
-			MiniCssExtractPlugin.loader,
-			'css-loader'
-		]
-	}
+   // Under `module.rules`
+   {
+   	test: /\.css$/,
+   	use: [
+   		MiniCssExtractPlugin.loader,
+   		'css-loader'
+   	]
+   }
 
-	// Under `plugins`
-	new MiniCssExtractPlugin({
-		filename: 'content.css'
-	})
-	```
+   // Under `plugins`
+   new MiniCssExtractPlugin({
+   	filename: 'content.css'
+   })
+   ```
 
 #### TypeScript
 
@@ -106,33 +112,32 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 
 1. Install TypeScript and respective loader for webpack
 
-	``` sh
-	npm i --save-dev typescript ts-loader @types/firefox-webext-browser
-	```
+   ```sh
+   npm i --save-dev typescript ts-loader @types/firefox-webext-browser
+   ```
+
 1. Use the following webpack rule in the config file.
 
-	``` js
-	{
-		test: /\.(js|ts|tsx)$/,
-		loader: 'ts-loader',
-		exclude: /node_modules/
-	},
-	```
+   ```js
+   {
+   	test: /\.(js|ts|tsx)$/,
+   	loader: 'ts-loader',
+   	exclude: /node_modules/
+   },
+   ```
 
 1. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
 
-	``` json
-	{
-		"extends": "@sindresorhus/tsconfig",
-		"compilerOptions": {
-			"target": "esnext",
-			"declaration": false
-		},
-		"include": [
-			"source"
-		]
-	}
-	```
+   ```json
+   {
+   	"extends": "@sindresorhus/tsconfig",
+   	"compilerOptions": {
+   		"target": "esnext",
+   		"declaration": false
+   	},
+   	"include": ["source"]
+   }
+   ```
 
 TypeScript requires additional configuration depending on how you set it up, like [linting][link-xo-ts].
 
@@ -149,7 +154,7 @@ It's possible to publish to both the Chrome Web Store and Mozilla Addons at once
 
 And then running:
 
-``` sh
+```sh
 npm run release
 ```
 
@@ -181,4 +186,3 @@ Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com
 ## License
 
 [![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
