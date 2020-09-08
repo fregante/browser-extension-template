@@ -51,9 +51,9 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 			{
 				test: /\.js$/,
 				exclude: /node_modules/,
-				loader: 'babel-loader',
-			},
-		];
+				loader: 'babel-loader'
+			}
+		]
 	}
 	```
 
@@ -135,7 +135,9 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 			"target": "esnext",
 			"declaration": false
 		},
-		"include": ["source"]
+		"include": [
+			"source"
+		]
 	}
 	```
 
