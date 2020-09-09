@@ -39,12 +39,13 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 
 1. Install Babel packages and respective loader for webpack.
 
-	``` sh
+	```sh
 	npm i --save-dev @babel/core @babel/preset-env babel-loader
 	```
+
 1. In `webpack.config.js`, add the following rule to process JS files.
 
-	``` js
+	```js
 	module: {
 		rules: [
 			{
@@ -55,17 +56,21 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 		]
 	}
 	```
+
 1. Target respective browsers using `.babelrc`.
 
-	``` json
+	```json
 	{
 		"presets": [
-			["@babel/preset-env", {
-				"targets": {
-					"chrome": "74",
-					"firefox": "67"
+			[
+				"@babel/preset-env",
+				{
+					"targets": {
+						"chrome": "74",
+						"firefox": "67"
+					}
 				}
-			}]
+			]
 		]
 	}
 	```
@@ -76,12 +81,13 @@ If you will be writing any code that will be importing CSS files from JS files, 
 
 1. Install the webpack plugin.
 
-	``` sh
+	```sh
 	npm i --save-dev mini-css-extract-plugin
 	```
+
 1. Modify the webpack config as mentioned to let this plugin handle CSS imports.
 
-	``` js
+	```js
 	// Import plugin
 	const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
@@ -106,12 +112,13 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 
 1. Install TypeScript and respective loader for webpack
 
-	``` sh
+	```sh
 	npm i --save-dev typescript ts-loader @types/firefox-webext-browser
 	```
+
 1. Use the following webpack rule in the config file.
 
-	``` js
+	```js
 	{
 		test: /\.(js|ts|tsx)$/,
 		loader: 'ts-loader',
@@ -121,7 +128,7 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 
 1. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
 
-	``` json
+	```json
 	{
 		"extends": "@sindresorhus/tsconfig",
 		"compilerOptions": {
@@ -149,7 +156,7 @@ It's possible to publish to both the Chrome Web Store and Mozilla Addons at once
 
 And then running:
 
-``` sh
+```sh
 npm run release
 ```
 
@@ -181,4 +188,3 @@ Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com
 ## License
 
 [![CC0](https://mirrors.creativecommons.org/presskit/buttons/88x31/svg/cc-zero.svg)](https://creativecommons.org/publicdomain/zero/1.0/)
-
