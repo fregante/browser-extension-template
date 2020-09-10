@@ -22,7 +22,7 @@ jobs:
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
-      - uses: notlmn/release-with-changelog@run-anywhere
+      - uses: notlmn/release-with-changelog@v2
         with:
           header: '### Changelog'
           include-hash: true
