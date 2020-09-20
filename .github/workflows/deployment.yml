@@ -22,12 +22,11 @@ jobs:
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
-      - uses: notlmn/release-with-changelog@v2
+      - uses: notlmn/release-with-changelog@v3
         with:
-          header: '### Changelog'
-          include-hash: true
-          include-range: true
           token: ${{ secrets.GITHUB_TOKEN }}
+          template: '{commits}'
+          exclude: '^Meta|^Document|^Readme|^Lint'
       - name: Update extension’s meta
         env:
           VER: ${{ steps.daily-version.outputs.version }}
