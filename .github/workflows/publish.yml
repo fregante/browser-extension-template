@@ -1,5 +1,5 @@
 # Copied from https://github.com/notlmn/browser-extension-template/blob/master/.github/workflows/deployment.yml
-name: Deployment
+name: Publish
 
 on:
   workflow_dispatch:
@@ -37,26 +37,22 @@ jobs:
         with:
           path: distribution
 
-  Chrome:
+  Submit:
     needs: Build
     if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
+    strategy:
+      matrix:
+        command:
+          - web-ext-submit@4
+          - chrome-webstore-upload-cli@1 upload --auto-publish
     runs-on: ubuntu-latest
     steps:
       - uses: actions/download-artifact@v2
-      - run: cd artifact && npx chrome-webstore-upload-cli@1 upload --auto-publish
+      - run: cd artifact && npx ${{ matrix.command }}
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-
-  Firefox:
-    needs: Build
-    if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-      - run: cd artifact && npx web-ext-submit@4
-        env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
