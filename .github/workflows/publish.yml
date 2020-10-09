@@ -12,6 +12,7 @@ jobs:
   Version:
     outputs:
       created: ${{ steps.daily-version.outputs.created }}
+      version: ${{ steps.daily-version.outputs.version }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
