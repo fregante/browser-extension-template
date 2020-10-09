@@ -9,7 +9,7 @@ on:
     - cron: '31 13 * * 3'
 
 jobs:
-  Build:
+  Version:
     outputs:
       created: ${{ steps.daily-version.outputs.created }}
     runs-on: ubuntu-latest
@@ -25,30 +25,23 @@ jobs:
       - uses: notlmn/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          template: '{commits}'
           exclude: '^Meta|^Document|^Readme|^Lint'
-      - name: Update extension’s meta
-        env:
-          VER: ${{ steps.daily-version.outputs.version }}
-        run: |
-          echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL.txt
-          npm run version
-      - uses: actions/upload-artifact@v2
-        with:
-          path: distribution
 
   Submit:
-    needs: Build
+    needs: Version
     if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
     strategy:
       matrix:
         command:
-          - web-ext-submit@4
-          - chrome-webstore-upload-cli@1 upload --auto-publish
+          - release:amo
+          - release:chrome
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
-      - run: cd artifact && npx ${{ matrix.command }}
+      - run: npm install
+      - run: npm run build
+      - name: Update extension’s meta
+        run: npm run version -- ${{ steps.daily-version.outputs.version }}
+      - run: npm run ${{ matrix.command }}
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
