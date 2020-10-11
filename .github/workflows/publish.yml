@@ -34,15 +34,15 @@ jobs:
     strategy:
       matrix:
         command:
-          - release:amo
-          - release:chrome
+          - firefox
+          - chrome
     runs-on: ubuntu-latest
     steps:
       - run: npm install
       - run: npm run build
       - name: Update extension’s meta
-        run: npm run version -- ${{ steps.daily-version.outputs.version }}
-      - run: npm run ${{ matrix.command }}
+        run: npx dot-json distribution/manifest.json version ${{ steps.daily-version.outputs.version }}
+      - run: npm run release:${{ matrix.command }}
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
