@@ -1,5 +1,5 @@
-# Copied from https://github.com/notlmn/browser-extension-template/blob/master/.github/workflows/deployment.yml
-name: Deployment
+# Copied from https://github.com/notlmn/browser-extension-template/blob/master/.github/workflows/release.yml
+name: Release
 
 on:
   workflow_dispatch:
@@ -9,54 +9,44 @@ on:
     - cron: '31 13 * * 3'
 
 jobs:
-  Build:
+  Version:
     outputs:
       created: ${{ steps.daily-version.outputs.created }}
+      version: ${{ steps.daily-version.outputs.version }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 20
       - run: npm install
-      - run: npm test # This includes the build
+      - run: npm test
       - uses: fregante/daily-version-action@v1
         name: Create tag if necessary
         id: daily-version
       - uses: notlmn/release-with-changelog@v3
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          template: '{commits}'
           exclude: '^Meta|^Document|^Readme|^Lint'
-      - name: Update extension’s meta
-        env:
-          VER: ${{ steps.daily-version.outputs.version }}
-        run: |
-          echo https://github.com/$GITHUB_REPOSITORY/tree/$VER > distribution/SOURCE_URL.txt
-          npm run version
-      - uses: actions/upload-artifact@v2
-        with:
-          path: distribution
 
-  Chrome:
-    needs: Build
+  Submit:
+    needs: Version
     if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
+    strategy:
+      matrix:
+        command:
+          - firefox
+          - chrome
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v2
-      - run: cd artifact && npx chrome-webstore-upload-cli@1 upload --auto-publish
+      - run: npm install
+      - run: npm run build
+      - name: Update extension’s meta
+        run: npx dot-json distribution/manifest.json version ${{ steps.daily-version.outputs.version }}
+      - run: npm run release:${{ matrix.command }}
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
           CLIENT_ID: ${{ secrets.CLIENT_ID }}
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
-
-  Firefox:
-    needs: Build
-    if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-      - run: cd artifact && npx web-ext-submit@4
-        env:
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
