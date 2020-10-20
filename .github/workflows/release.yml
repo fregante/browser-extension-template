@@ -31,18 +31,20 @@ jobs:
 
   Submit:
     needs: Version
-    if: github.event_name == 'workflow_dispatch' || needs.Build.outputs.created
+    if: github.event_name == 'workflow_dispatch' || needs.Version.outputs.created
     strategy:
+      fail-fast: false
       matrix:
         command:
           - firefox
           - chrome
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - run: npm install
       - run: npm run build
       - name: Update extension’s meta
-        run: npx dot-json distribution/manifest.json version ${{ steps.daily-version.outputs.version }}
+        run: npx dot-json distribution/manifest.json version ${{ needs.Version.outputs.version }}
       - run: npm run release:${{ matrix.command }}
         env:
           EXTENSION_ID: ${{ secrets.EXTENSION_ID }}
