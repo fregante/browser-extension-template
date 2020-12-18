@@ -15,7 +15,8 @@
 		"128": "icon.png"
 	},
 	"permissions": [
-		"storage"
+		"storage",
+		"https://github.com/*"
 	],
 	"options_ui": {
 		"chrome_style": true,
