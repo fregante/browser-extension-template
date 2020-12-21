@@ -116,7 +116,7 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 	npm i --save-dev typescript ts-loader @types/firefox-webext-browser
 	```
 
-1. Use the following webpack rule in the config file.
+2. Use the following webpack rule in the config file.
 
 	```js
 	{
@@ -125,8 +125,14 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 		exclude: /node_modules/
 	},
 	```
+3. Ask webpack to [resolve ts files](https://stackoverflow.com/questions/43595555/webpack-cant-resolve-typescript-modules) by adding this to your `webpack.config.json`:
+	```js
+	resolve: {
+	    extensions: ['.ts', '.js', '.json']
+	}
+	```
 
-1. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
+4. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
 
 	```json
 	{
@@ -140,7 +146,6 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 		]
 	}
 	```
-
 TypeScript requires additional configuration depending on how you set it up, like [linting][link-xo-ts].
 
 ### Auto-syncing options
