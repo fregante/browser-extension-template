@@ -125,7 +125,7 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 		exclude: /node_modules/
 	},
 	```
-3. Ask webpack to [resolve ts files](https://stackoverflow.com/questions/43595555/webpack-cant-resolve-typescript-modules) by adding this to your `webpack.config.json`:
+3. Ask webpack to [resolve ts modules/imports](https://stackoverflow.com/questions/43595555/webpack-cant-resolve-typescript-modules) by adding this to your `webpack.config.json`:
 	```js
 	resolve: {
 	    extensions: ['.ts', '.js', '.json']
