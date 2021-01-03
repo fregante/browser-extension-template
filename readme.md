@@ -43,7 +43,7 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 	npm i --save-dev @babel/core @babel/preset-env babel-loader
 	```
 
-1. In `webpack.config.js`, add the following rule to process JS files.
+2. In `webpack.config.js`, add the following rule to process JS files.
 
 	```js
 	module: {
@@ -57,7 +57,7 @@ The template bakes in a pretty basic webpack config, with no transpiling. To set
 	}
 	```
 
-1. Target respective browsers using `.babelrc`.
+3. Target respective browsers using `.babelrc`.
 
 	```json
 	{
@@ -85,7 +85,7 @@ If you will be writing any code that will be importing CSS files from JS files, 
 	npm i --save-dev mini-css-extract-plugin
 	```
 
-1. Modify the webpack config as mentioned to let this plugin handle CSS imports.
+2. Modify the webpack config as mentioned to let this plugin handle CSS imports.
 
 	```js
 	// Import plugin
@@ -125,14 +125,14 @@ TypeScript and Babel configs conflict each other, so you can only use one of the
 		exclude: /node_modules/
 	},
 	```
-3. Ask webpack to [resolve ts modules/imports](https://stackoverflow.com/questions/43595555/webpack-cant-resolve-typescript-modules) by adding this to your `webpack.config.json`:
+3. Ask webpack to [resolve ts modules/imports](https://stackoverflow.com/questions/43595555/webpack-cant-resolve-typescript-modules) by adding this to your `webpack.config.js`:
 	```js
 	resolve: {
-	    extensions: ['.ts', '.js', '.json']
+		extensions: ['.ts', '.js']
 	}
 	```
 
-4. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependecy before using).
+4. Use the following as `tsconfig.json`, uses [sindresorhus/tsconfig][link-tsconfig] (install it as dependency before using).
 
 	```json
 	{
@@ -157,7 +157,7 @@ Options are managed by [fregante/webext-options-sync][link-options-sync], which 
 It's possible to publish to both the Chrome Web Store and Mozilla Addons at once by creating these ENV variables:
 
 1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
-1. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
+2. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
 And then running:
 
@@ -168,8 +168,8 @@ npm run release
 This will:
 
 1. Build the extension
-1. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/fregante/daily-version) and sets it in the manifest.json
-1. Deploy it to both stores
+2. Create a version number based on the current UTC time, like [`19.6.16.428`](https://github.com/fregante/daily-version) and sets it in the manifest.json
+3. Deploy it to both stores
 
 #### Auto-publishing
 
