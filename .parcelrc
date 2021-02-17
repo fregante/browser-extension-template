@@ -1,3 +1,11 @@
 {
-	"extends": "@parcel/config-webextension"
+	"extends": "@parcel/config-webextension",
+
+	// The following preserves `webextensions-polyfill`’s UMD package without re-bundling it
+	"transformers": {
+		"browser-polyfill.js": []
+	},
+	"packagers": {
+		"browser-polyfill.js": "@parcel/packager-raw"
+	}
 }
