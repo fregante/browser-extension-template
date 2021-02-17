@@ -44,5 +44,8 @@
 		"stylelint": "^13.10.0",
 		"stylelint-config-xo": "^0.20.0",
 		"xo": "^0.37.1"
+	},
+	"webExt": {
+		"sourceDir": "distribution"
 	}
 }
