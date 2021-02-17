@@ -25,7 +25,7 @@ This extension template is heavily inspired by [refined-github][link-rgh], [noti
 
 ## How to use this template
 
-Click [<kbd>Use this template</kbd>](https://github.com/notlmn/browser-extension-template/generate) and make a copy of your own. 😉
+Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) and make a copy of your own. 😉
 
 ## Configuration
 
