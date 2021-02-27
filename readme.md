@@ -156,7 +156,7 @@ Options are managed by [fregante/webext-options-sync][link-options-sync], which 
 
 It's possible to publish to both the Chrome Web Store and Mozilla Addons at once by creating these ENV variables:
 
-1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
+1. `EXTENSION_ID`, `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
 2. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
 And then running:
