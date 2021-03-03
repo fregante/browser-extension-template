@@ -48,7 +48,7 @@ It's possible to automatically publish to both the Chrome Web Store and Mozilla 
 1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
 2. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
-Make sure your `manifest.json` includes the Chrome Extension’s [`key`](https://developer.chrome.com/docs/extensions/mv2/manifest/key/) (you'll find it in the your Chrome Webstore URL) and Mozilla’s [`gecko.id`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings).
+Also include `EXTENSION_ID` in the secrets ([how to find it](https://stackoverflow.com/a/8946415/288906)) and add Mozilla’s [`gecko.id`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings) to `manifest.json`.
 
 The GitHub Actions workflow will:
 
