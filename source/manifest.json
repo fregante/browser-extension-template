@@ -24,7 +24,6 @@
 	"background": {
 		"persistent": false,
 		"scripts": [
-			"browser-polyfill.min.js",
 			"background.js"
 		]
 	}

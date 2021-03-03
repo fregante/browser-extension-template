@@ -1,21 +1,30 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "webpack --mode=production",
+		"build": "parcel build source/manifest.json --no-content-hash --no-source-maps --dist-dir distribution --no-cache --detailed-report 0",
 		"lint": "run-p lint:*",
 		"lint-fix": "run-p 'lint:* -- --fix'",
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "webpack --mode=development --watch"
+		"watch": "parcel watch source/manifest.json --dist-dir distribution --no-cache --no-hmr"
 	},
+	"browserslist": [
+		"last 1 Chrome version",
+		"last 1 Firefox version"
+	],
 	"xo": {
 		"envs": [
 			"browser"
 		],
-		"globals": [
-			"browser"
-		]
+		"rules": {
+			"no-unused-vars": [
+				"error",
+				{
+					"varsIgnorePattern": "browser"
+				}
+			]
+		}
 	},
 	"stylelint": {
 		"extends": "stylelint-config-xo"
@@ -25,14 +34,23 @@
 		"webextension-polyfill": "^0.7.0"
 	},
 	"devDependencies": {
-		"copy-webpack-plugin": "^5.0.3",
+		"@parcel/config-webextension": "^2.0.0-nightly.2220",
+		"@parcel/optimizer-cssnano": "^2.0.0-nightly.599",
+		"@parcel/optimizer-htmlnano": "^2.0.0-nightly.599",
+		"@parcel/packager-css": "^2.0.0-nightly.599",
+		"@parcel/packager-html": "^2.0.0-nightly.599",
+		"@parcel/transformer-css": "^2.0.0-nightly.599",
+		"@parcel/transformer-html": "^2.0.0-nightly.598",
+		"@parcel/transformer-postcss": "^2.0.0-nightly.599",
+		"@parcel/transformer-posthtml": "^2.0.0-nightly.598",
+		"@parcel/transformer-webextension": "^2.0.0-nightly.2220",
 		"npm-run-all": "^4.1.5",
-		"size-plugin": "^1.2.0",
+		"parcel": "^2.0.0-nightly.596",
 		"stylelint": "^13.10.0",
 		"stylelint-config-xo": "^0.20.0",
-		"terser-webpack-plugin": "^1.3.0",
-		"webpack": "^4.36.1",
-		"webpack-cli": "^3.3.6",
 		"xo": "^0.37.1"
+	},
+	"webExt": {
+		"sourceDir": "distribution"
 	}
 }
