@@ -24,7 +24,6 @@
 	"background": {
 		"persistent": false,
 		"scripts": [
-			"~/node_modules/webextension-polyfill",
 			"background.js"
 		]
 	}

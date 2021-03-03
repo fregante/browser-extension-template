@@ -17,9 +17,14 @@
 		"envs": [
 			"browser"
 		],
-		"globals": [
-			"browser"
-		]
+		"rules": {
+			"no-unused-vars": [
+				"error",
+				{
+					"varsIgnorePattern": "browser"
+				}
+			]
+		}
 	},
 	"stylelint": {
 		"extends": "stylelint-config-xo"
