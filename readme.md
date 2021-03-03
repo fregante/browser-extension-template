@@ -48,11 +48,15 @@ It's possible to automatically publish to both the Chrome Web Store and Mozilla 
 1. `CLIENT_ID`, `CLIENT_SECRET`, and `REFRESH_TOKEN` from [Google APIs][link-cws-keys].
 2. `WEB_EXT_API_KEY`, and `WEB_EXT_API_SECRET` from [AMO][link-amo-keys].
 
+Make sure your `manifest.json` includes the Chrome Extension’s [`key`](https://developer.chrome.com/docs/extensions/mv2/manifest/key/) (you'll find it in the your Chrome Webstore URL) and Mozilla’s [`gecko.id`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings).
+
 The GitHub Actions workflow will:
 
 1. Build the extension
 2. Create a version number based on the current UTC date time, like [`19.6.16`](https://github.com/fregante/daily-version-action) and sets it in the manifest.json
 3. Deploy it to both stores
+
+
 
 #### Auto-publishing
 
