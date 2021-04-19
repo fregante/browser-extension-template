@@ -12,4 +12,7 @@ jobs:
       - run: npm install
       - run: npm test
       - run: echo $GITHUB_RUN_ID
+      - run: 'false'
       - run: sleep 200
+        if: ${{ always() }}
+
