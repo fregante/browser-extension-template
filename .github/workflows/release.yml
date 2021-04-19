@@ -3,13 +3,11 @@ env:
 
 # FILE GENERATED WITH: npx ghat fregante/ghatemplates/webext
 # SOURCE: https://github.com/fregante/ghatemplates
-# OPTIONS: {"set":["on.schedule=[{\"cron\": \"31 12 * * 6\"}]"]}
+# OPTIONS: {"exclude":["on.schedule"]}
 
 name: Release
 on:
   workflow_dispatch: null
-  schedule:
-    - cron: 31 12 * * 6
 jobs:
   Version:
     outputs:
@@ -43,6 +41,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Create GitHub deployment
+        uses: fregante/compact-github-deployment-action@v0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          environment: ${{ matrix.command }}
       - name: install
         run: npm ci || npm install
       - run: npm run build --if-present
@@ -67,3 +70,8 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
+      - name: Update GitHub deployment
+        uses: fregante/compact-github-deployment-action@v0
+        if: ${{ always() }}
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
