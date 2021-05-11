@@ -41,11 +41,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create GitHub deployment
-        uses: fregante/compact-github-deployment-action@v0
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          environment: ${{ matrix.command }}
       - name: install
         run: npm ci || npm install
       - run: npm run build --if-present
@@ -70,8 +65,3 @@ jobs:
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
           WEB_EXT_API_KEY: ${{ secrets.WEB_EXT_API_KEY }}
           WEB_EXT_API_SECRET: ${{ secrets.WEB_EXT_API_SECRET }}
-      - name: Update GitHub deployment
-        uses: fregante/compact-github-deployment-action@v0
-        if: ${{ always() }}
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
