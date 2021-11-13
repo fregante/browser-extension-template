@@ -9,21 +9,55 @@
 [link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
-> Barebones boilerplate with Parcel 2, options handler and auto-publishing.
-
-![Sample extension output](media/previewer.png)
+> Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
 
 ## Features
 
 - Use npm dependencies thanks to Parcel 2.
-- Use modern Promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
+- Use modern promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
 - [Extensive configuration documentation](#configuration).
 
-## How to use this template
+## Getting started
 
-Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) and make a copy of your own. 😉
+### Create your own Copy
+
+1. Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) to make a copy of your own. 😉
+1. Enter a repository name eg. `my-awesome-extension`
+1. click <kbd>Create Repository from template</kbd>
+
+### Build locally
+1. Checkout the copied repository to your local machine eg. with `git clone https://github.com/my-username/my-awesome-extension/`
+1. run `npm install` to install all required dependencies
+1. run `npm run build`
+1. optional: inspect the resulting `/distribution` to see the final code that will be loaded by the browser.
+
+### Run the extension
+Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommened for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
+
+1. run `npm run watch` to watch for file changes and build continously
+1. run `npm install --global web-ext`
+1. run `web-ext run` for Firefox or `web-ext run -t chromium`
+1. Check that the extension is loaded by looking for it in the ... menu
+-  TODO: Firefox should we add an ui_icon to the template? Or maybe a even more visible change, for example a content-script for github.com with a border?
+
+### Make the first change
+1. Edit source\manifest.json to `"name": "My Awesome Extension",`
+1. Go back to your browser and see the change take effect
+- TODO: Test in Firefox and Chrome, i feel like in chrome I have to reload the page, where as Firefox automatically reloads the content scripts
+
+### Optional: Manually load in Firefox (without web-ext)
+1. Go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)
+1. Click <kbd>Load Temporary Add-on...</kbd>
+1. select the  folder `.../my-awesome-extension/distribution`
+- TODO: This doesn't work, seems like we have to package for FF, we can't load the folder
+
+### Optional: Manually load in Chrome (without web-ext)
+1. Go to [chrome://extensions/](chrome://extensions/)
+1. Click <kbd>Load Unpacked</kbd>
+1. Select the folder `.../my-awesome-extension/distribution`
+- TOOD: There is an error about the gecko key in the manifest
 
 ## Configuration
 
@@ -41,6 +75,8 @@ Being based on Parcel 2 and its [WebExtension transformer](https://v2.parceljs.o
 
 Options are managed by [fregante/webext-options-sync][link-options-sync], which auto-saves and auto-restores the options form, applies defaults and runs migrations.
 
+![Sample extension options output](media/previewer.png)
+
 ### Publishing
 
 It's possible to automatically publish to both the Chrome Web Store and Mozilla Addons at once by adding these secrets on GitHub Actions:
@@ -55,8 +91,6 @@ The GitHub Actions workflow will:
 1. Build the extension
 2. Create a version number based on the current UTC date time, like [`19.6.16`](https://github.com/fregante/daily-version-action) and sets it in the manifest.json
 3. Deploy it to both stores
-
-
 
 #### Auto-publishing
 
