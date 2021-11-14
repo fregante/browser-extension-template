@@ -51,17 +51,9 @@ Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-star
 1. Go back to your browser and see the change take effect
 - TODO: Test in Firefox and Chrome, i feel like in chrome I have to reload the page, where as Firefox automatically reloads the content scripts
 
-### Optional: Manually load in Firefox (without web-ext)
-1. Go to [about:debugging#/runtime/this-firefox](about:debugging#/runtime/this-firefox)
-1. Click <kbd>Load Temporary Add-on...</kbd>
-1. select the  folder `.../my-awesome-extension/distribution`
-- TODO: This doesn't work, seems like we have to package for FF, we can't load the folder
+## Optional: Loading into the browser
 
-### Optional: Manually load in Chrome (without web-ext)
-1. Go to [chrome://extensions/](chrome://extensions/)
-1. Click <kbd>Load Unpacked</kbd>
-1. Select the folder `.../my-awesome-extension/distribution`
-- TOOD: There is an error about the gecko key in the manifest
+Instead of using `web-ext`, you can [load the extension manually in Chrome](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#google-chrome-opera-vivaldi) or [Firefox](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#mozilla-firefox).
 
 ## Configuration
 
