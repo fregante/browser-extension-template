@@ -31,7 +31,8 @@
 1. Checkout the copied repository to your local machine eg. with `git clone https://github.com/my-username/my-awesome-extension/`
 1. run `npm install` to install all required dependencies
 1. run `npm run build`
-1. optional: inspect the resulting `/distribution` to see the final code that will be loaded by the browser.
+
+The build step will create the `distribution` folder, this folder will contain the generated extension.
 
 ### Run the extension
 Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommened for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
