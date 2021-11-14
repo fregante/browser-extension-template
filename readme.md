@@ -29,8 +29,6 @@ Screenshot of extension options:
 ### Create your own Copy
 
 1. Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) to make a copy of your own. 😉
-1. Enter a repository name eg. `my-awesome-extension`
-1. click <kbd>Create Repository from template</kbd>
 
 ### Build locally
 1. Checkout the copied repository to your local machine eg. with `git clone https://github.com/my-username/my-awesome-extension/`
