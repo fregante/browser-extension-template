@@ -14,8 +14,6 @@
 Screenshot of extension options:
 ![Sample extension options output](media/previewer.png)
 
-
-
 ## Features
 
 - Use npm dependencies thanks to Parcel 2.
