@@ -11,6 +11,11 @@
 
 > Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
 
+Screenshot of extension options:
+![Sample extension options output](media/previewer.png)
+
+
+
 ## Features
 
 - Use npm dependencies thanks to Parcel 2.
@@ -75,8 +80,6 @@ Being based on Parcel 2 and its [WebExtension transformer](https://v2.parceljs.o
 ### Auto-syncing options
 
 Options are managed by [fregante/webext-options-sync][link-options-sync], which auto-saves and auto-restores the options form, applies defaults and runs migrations.
-
-![Sample extension options output](media/previewer.png)
 
 ### Publishing
 
