@@ -39,15 +39,15 @@ The build step will create the `distribution` folder, this folder will contain t
 Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommened for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
 
 1. run `npm run watch` to watch for file changes and build continously
-1. run `npm install --global web-ext`
-1. run `web-ext run` for Firefox or `web-ext run -t chromium`
-1. Check that the extension is loaded by looking for it in the ... menu
--  TODO: Firefox should we add an ui_icon to the template? Or maybe a even more visible change, for example a content-script for github.com with a border?
+1. run `npm install --global web-ext` (only only for the first time)
+1. in another terminal, run `web-ext run` for Firefox or `web-ext run -t chromium`
+1. Check that the extension is loaded by opening the extension options ([in Firefox](media/extension_options_firefox.png) or [in Chrome](media/extension_options_chrome.png)).
 
 ### Make the first change
-1. Edit source\manifest.json to `"name": "My Awesome Extension",`
-1. Go back to your browser and see the change take effect
-- TODO: Test in Firefox and Chrome, i feel like in chrome I have to reload the page, where as Firefox automatically reloads the content scripts
+1. For example, edit source\manifest.json to `"name": "My Awesome Extension",`
+1. Go back to your browser, reload and see the change take effect
+
+Note: Firefox will automatically reload content scripts when the extension is updated, Chrome requires you to reload the page to reload the content scripts.
 
 ## Optional: Loading into the browser
 
