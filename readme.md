@@ -9,21 +9,52 @@
 [link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
-> Barebones boilerplate with Parcel 2, options handler and auto-publishing.
+> Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
 
-![Sample extension output](media/previewer.png)
+Screenshot of extension options:
+![Sample extension options output](media/previewer.png)
 
 ## Features
 
 - Use npm dependencies thanks to Parcel 2.
-- Use modern Promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
+- Use modern promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
 - [Extensive configuration documentation](#configuration).
 
-## How to use this template
+## Getting started
 
-Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) and make a copy of your own. 😉
+### Create your own copy
+
+1. Click [<kbd>Use this template</kbd>](https://github.com/fregante/browser-extension-template/generate) to make a copy of your own. 😉
+
+### Build locally
+
+1. Checkout the copied repository to your local machine eg. with `git clone https://github.com/my-username/my-awesome-extension/`
+1. run `npm install` to install all required dependencies
+1. run `npm run build`
+
+The build step will create the `distribution` folder, this folder will contain the generated extension.
+
+### Run the extension
+
+Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommened for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
+
+1. run `npm run watch` to watch for file changes and build continuously
+1. run `npm install --global web-ext` (only only for the first time)
+1. in another terminal, run `web-ext run` for Firefox or `web-ext run -t chromium`
+1. Check that the extension is loaded by opening the extension options ([in Firefox](media/extension_options_firefox.png) or [in Chrome](media/extension_options_chrome.png)).
+
+#### Manually
+
+You can also [load the extension manually in Chrome](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#google-chrome-opera-vivaldi) or [Firefox](https://www.smashingmagazine.com/2017/04/browser-extension-edge-chrome-firefox-opera-brave-vivaldi/#mozilla-firefox).
+
+### Make the first change
+
+1. For example, edit source\manifest.json to `"name": "My Awesome Extension",`
+1. Go back to your browser, reload and see the change take effect
+
+Note: Firefox will automatically reload content scripts when the extension is updated, Chrome requires you to reload the page to reload the content scripts.
 
 ## Configuration
 
@@ -31,7 +62,7 @@ The extension doesn't target any specific ECMAScript environment or provide any 
 
 ### Parcel 2
 
-Being based on Parcel 2 and its [WebExtension transformer](https://v2.parceljs.org/recipes/web-extension/), you get all the good parts:
+Being based on Parcel 2 and its [WebExtension transformer](https://parceljs.org/recipes/web-extension/), you get all the good parts:
 
 - Browserlist-based code transpiling (which defaults to just the latest Chrome and Firefox versions)
 - Automatically picks up any new file specified in `manifest.json`
@@ -55,8 +86,6 @@ The GitHub Actions workflow will:
 1. Build the extension
 2. Create a version number based on the current UTC date time, like [`19.6.16`](https://github.com/fregante/daily-version-action) and sets it in the manifest.json
 3. Deploy it to both stores
-
-
 
 #### Auto-publishing
 
