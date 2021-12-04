@@ -1,8 +1,8 @@
 #text-warning {
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    padding: 10px;
-    background: white;
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	padding: 10px;
+	background: #fff;
 	z-index: 999999;
 }
