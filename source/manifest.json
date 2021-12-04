@@ -2,7 +2,7 @@
 	"name": "Awesome Extension",
 	"version": "0.0.0",
 	"description": "An awesome new browser extension",
-	"homepage_url": "https://github.com/awesome-templates/browser-extension-template",
+	"homepage_url": "https://github.com/fregante/browser-extension-template",
 	"manifest_version": 2,
 	"minimum_chrome_version": "74",
 	"applications": {
@@ -15,7 +15,15 @@
 		"128": "icon.png"
 	},
 	"permissions": [
-		"storage"
+		"storage",
+		"<all_urls>"
+	],
+	"content_scripts": [ {
+			"matches": [ "*://*/*" ],
+			"js":      [ "content.js" ],
+			"css":     ["content.css"],
+			"run_at":  "document_end"
+		}
 	],
 	"options_ui": {
 		"chrome_style": true,
