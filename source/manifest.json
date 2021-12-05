@@ -15,14 +15,15 @@
 		"128": "icon.png"
 	},
 	"permissions": [
+		"https://github.com/fregante/browser-extension-template/*",
 		"storage"
 	],
 	"content_scripts": [ 
 		{
 			"matches": [ "https://github.com/fregante/browser-extension-template/*" ],
-			"js":      [ "content.js" ],
-			"css":     [ "content.css" ],
-			"run_at":  "document_end"
+			"js": [ "content.js" ],
+			"css": [ "content.css" ],
+			"run_at": "document_end"
 		}
  	],
 	"options_ui": {
