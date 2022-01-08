@@ -12,6 +12,7 @@
 > Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
 
 Screenshot of extension options:
+
 ![Sample extension options output](media/previewer.png)
 
 ## Features
