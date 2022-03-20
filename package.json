@@ -43,6 +43,11 @@
 		"xo": "^0.48.0"
 	},
 	"webExt": {
-		"sourceDir": "distribution"
+		"sourceDir": "distribution",
+		"run": {
+			"startUrl": [
+				"https://github.com/fregante/browser-extension-template"
+			]
+		}
 	}
 }

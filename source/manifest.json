@@ -25,7 +25,7 @@
 			"css": [ "content.css" ],
 			"run_at": "document_end"
 		}
- 	],
+	],
 	"options_ui": {
 		"chrome_style": true,
 		"page": "options.html"
