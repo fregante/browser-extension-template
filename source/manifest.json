@@ -5,7 +5,7 @@
 	"homepage_url": "https://github.com/fregante/browser-extension-template",
 	"manifest_version": 2,
 	"minimum_chrome_version": "80",
-	"applications": {
+	"browser_specific_settings": {
 		"gecko": {
 			"id": "awesome-extension@notlmn.github.io",
 			"strict_min_version": "80.0"
@@ -27,7 +27,7 @@
 		}
 	],
 	"options_ui": {
-		"chrome_style": true,
+		"browser_style": true,
 		"page": "options.html"
 	},
 	"background": {
