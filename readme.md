@@ -75,7 +75,6 @@ Being based on Parcel 2 and its [WebExtension transformer](https://parceljs.org/
 
 - Browserlist-based code transpiling (which defaults to just the latest Chrome and Firefox versions)
 - Automatically picks up any new file specified in `manifest.json`
-- Adding TypeScript support is as easy as adding a `tsconfig.json` file and renaming your `.js` files to `.ts`; [sindresorhus/tsconfig][link-tsconfig] is also advised.
 
 ### Auto-syncing options
 
