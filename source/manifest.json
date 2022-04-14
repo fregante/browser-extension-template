@@ -3,20 +3,16 @@
 	"version": "0.0.0",
 	"description": "An awesome new browser extension",
 	"homepage_url": "https://github.com/fregante/browser-extension-template",
-	"manifest_version": 2,
-	"minimum_chrome_version": "80",
-	"browser_specific_settings": {
-		"gecko": {
-			"id": "awesome-extension@notlmn.github.io",
-			"strict_min_version": "80.0"
-		}
-	},
+	"manifest_version": 3,
+	"minimum_chrome_version": "100",
 	"icons": {
 		"128": "icon.png"
 	},
 	"permissions": [
-		"https://github.com/fregante/browser-extension-template/*",
 		"storage"
+	],
+	"host_permissions": [
+		"https://github.com/fregante/browser-extension-template/*"
 	],
 	"content_scripts": [
 		{
@@ -31,9 +27,7 @@
 		"page": "options.html"
 	},
 	"background": {
-		"persistent": false,
-		"scripts": [
-			"background.js"
-		]
+		"service_worker": "background.js",
+		"type": "module"
 	}
 }
