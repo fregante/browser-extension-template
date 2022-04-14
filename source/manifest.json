@@ -12,11 +12,11 @@
 		"storage"
 	],
 	"host_permissions": [
-		"https://github.com/fregante/browser-extension-template/*"
+		"https://github.com/*"
 	],
 	"content_scripts": [
 		{
-			"matches": [ "https://github.com/fregante/browser-extension-template/*" ],
+			"matches": [ "https://github.com/*" ],
 			"js": [ "content.js" ],
 			"css": [ "content.css" ],
 			"run_at": "document_end"
