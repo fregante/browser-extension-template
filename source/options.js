@@ -20,7 +20,9 @@ for (const input of rangeInputs) {
 	input.addEventListener('input', updateInputField);
 }
 
-window.addEventListener('load', async () => {
+async function init() {
 	await optionsStorage.syncForm('#options-form');
 	updateOutputColor();
-});
+}
+
+init();
