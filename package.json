@@ -30,6 +30,7 @@
 		"extends": "stylelint-config-xo"
 	},
 	"dependencies": {
+		"webext-base-css": "^1.4.0",
 		"webext-options-sync": "^3.0.1",
 		"webextension-polyfill": "^0.8.0"
 	},
