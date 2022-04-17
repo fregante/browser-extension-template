@@ -1,6 +1,9 @@
 // Don't forget to import this wherever you use it
 import browser from 'webextension-polyfill';
 
+import 'webext-base-css/webext-base.css';
+import './options.css';
+
 import optionsStorage from './options-storage.js';
 
 const rangeInputs = [...document.querySelectorAll('input[type="range"][name^="color"]')];
