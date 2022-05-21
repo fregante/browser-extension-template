@@ -1,0 +1,26 @@
+# This is a GitHub Actions workflow for cleaning up resources in the original template. When users create
+# a new repository from the template, the workflow deletes and edits files and push a commit.
+#
+# There is no straightforward way to exclude files when a template is used, so this is a workaround for it.
+# https://github.community/t/can-you-ignore-files-folders-when-making-a-repo-from-a-template/3279
+
+name: Template cleanup
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    if: github.event.repository.name != 'browser-extension-template'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cleanup
+        run: |
+          rm -f \
+            .github/funding.yml \
+            .github/workflows/template-cleanup.yml
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Template cleanup
