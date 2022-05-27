@@ -23,7 +23,7 @@
 	"content_scripts": [
 		{
 			"matches": [ "https://github.com/fregante/browser-extension-template/*" ],
-			"js": [ "content.js" ],
+			"js": [ "content.ts" ],
 			"css": [ "content.css" ],
 			"run_at": "document_end"
 		}
@@ -33,7 +33,7 @@
 		"page": "options.html"
 	},
 	"background": {
-		"service_worker": "background.js",
+		"service_worker": "background.ts",
 		"type": "module"
 	}
 }

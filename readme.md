@@ -11,12 +11,8 @@
 
 > Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
 
-Screenshot of extension options:
-
-![Sample extension options output](media/previewer.png)
-
 ## Features
-
+- Typescript templates
 - Uses Manifest v3 ([not yet compatible with Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1578284))
 - Use npm dependencies thanks to Parcel 2.
 - Use modern promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].

@@ -7,7 +7,7 @@
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "parcel watch source/manifest.json --dist-dir distribution --no-cache --no-hmr"
+		"watch": "parcel watch source/manifest.json --no-content-hash --dist-dir distribution --no-cache --no-hmr"
 	},
 	"browserslist": [
 		"last 1 Chrome version",
@@ -46,7 +46,7 @@
 		"sourceDir": "distribution",
 		"run": {
 			"startUrl": [
-				"https://github.com/fregante/browser-extension-template"
+				"https://www.google.com/"
 			]
 		}
 	}
