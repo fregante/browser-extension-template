@@ -7,7 +7,15 @@
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "parcel watch source/manifest.json --dist-dir distribution --no-cache --no-hmr"
+		"watch": "parcel watch source/manifest.json --target development --dist-dir distribution --no-cache --no-hmr"
+	},
+	"targets": {
+		"development": {
+			"sourceMap": {
+				"inline": true,
+				"inlineSources": true
+			}
+		}
 	},
 	"browserslist": [
 		"last 1 Chrome version",
