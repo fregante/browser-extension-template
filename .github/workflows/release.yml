@@ -21,7 +21,7 @@ jobs:
       - name: install
         run: npm ci || npm install
       - run: npm test
-      - uses: fregante/daily-version-action@v1
+      - uses: fregante/daily-version-action@v2
         name: Create tag if necessary
         id: daily-version
       - uses: fregante/release-with-changelog@v3
