@@ -1,12 +1,11 @@
 # browser-extension-template
 
-[link-webext-polyfill]: https://github.com/mozilla/webextension-polyfill
 [link-rgh]: https://github.com/sindresorhus/refined-github
 [link-ngh]: https://github.com/sindresorhus/notifier-for-github
 [link-hfog]: https://github.com/sindresorhus/hide-files-on-github
 [link-tsconfig]: https://github.com/sindresorhus/tsconfig
 [link-options-sync]: https://github.com/fregante/webext-options-sync
-[link-cws-keys]: https://github.com/DrewML/chrome-webstore-upload/blob/master/How%20to%20generate%20Google%20API%20keys.md
+[link-cws-keys]: https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
 > Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
@@ -19,10 +18,8 @@ Screenshot of extension options:
 
 - Uses Manifest v3 ([not yet compatible with Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1578284))
 - Use npm dependencies thanks to Parcel 2.
-- Use modern promise-based `browser.*` APIs [webextension-polyfill][link-webext-polyfill].
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
-- [Extensive configuration documentation](#configuration).
 
 ## Getting started
 
