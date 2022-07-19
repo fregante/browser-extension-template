@@ -1,7 +1,7 @@
 #text-notice {
 	position: fixed;
-	bottom: 10px;
-	right: 10px;
+	top: 10px;
+	left: 10px;
 	padding: 10px;
 	background: #fff;
 	z-index: 999999;
