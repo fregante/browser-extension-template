@@ -41,5 +41,9 @@
 				"https://github.com/fregante/browser-extension-template"
 			]
 		}
-	}
+	},
+ 	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
+ 	"@parcel/bundler-default": {
+ 		"minBundles": 10000000
+ 	}
 }
