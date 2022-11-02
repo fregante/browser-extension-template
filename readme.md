@@ -39,7 +39,7 @@ The build step will create the `distribution` folder, this folder will contain t
 
 ### 🏃 Run the extension
 
-Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommened for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
+Using [web-ext](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/) is recommended for automatic reloading and running in a dedicated browser instance. Alternatively you can load the extension manually (see below).
 
 1. Run `npm run watch` to watch for file changes and build continuously
 1. Run `npm install --global web-ext` (only only for the first time)
