@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-unassigned-import
 import 'webext-base-css';
 import './options.css';
-
 import optionsStorage from './options-storage.js';
 
 const rangeInputs = [...document.querySelectorAll('input[type="range"][name^="color"]')];

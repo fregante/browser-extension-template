@@ -1,6 +1,6 @@
 import OptionsSync from 'webext-options-sync';
 
-export default new OptionsSync({
+const optionsStorage = new OptionsSync({
 	defaults: {
 		colorRed: 244,
 		colorGreen: 67,
@@ -12,3 +12,5 @@ export default new OptionsSync({
 	],
 	logging: true,
 });
+
+export default optionsStorage;
