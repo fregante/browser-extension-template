@@ -1,13 +1,13 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "parcel build source/manifest.json --no-content-hash --no-source-maps --dist-dir distribution --no-cache --detailed-report 0",
+		"build": "parcel build",
 		"lint": "run-p lint:*",
 		"lint-fix": "run-p 'lint:* -- --fix'",
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "parcel watch source/manifest.json --dist-dir distribution --no-cache --no-hmr"
+		"watch": "parcel watch --no-hmr"
 	},
 	"browserslist": [
 		"last 1 Chrome version",
@@ -17,22 +17,45 @@
 		"envs": [
 			"browser",
 			"webextensions"
-		]
+		],
+		"rules": {
+			"unicorn/prefer-top-level-await": "off"
+		}
 	},
 	"stylelint": {
-		"extends": "stylelint-config-xo"
+		"extends": [
+			"stylelint-config-xo",
+			"stylelint-config-prettier"
+		],
+		"rules": {
+			"function-whitespace-after": null,
+			"media-feature-range-operator-space-after": null,
+			"media-feature-range-operator-space-before": null
+		}
 	},
 	"dependencies": {
-		"webext-base-css": "^1.4.1",
-		"webext-options-sync": "^3.1.0"
+		"webext-base-css": "^1.4.3",
+		"webext-options-sync": "^4.2.1"
 	},
 	"devDependencies": {
-		"@parcel/config-webextension": "^2.6.2",
+		"@parcel/config-webextension": "^2.10.0",
 		"npm-run-all": "^4.1.5",
-		"parcel": "^2.6.2",
-		"stylelint": "^14.9.1",
-		"stylelint-config-xo": "^0.21.0",
-		"xo": "^0.50.0"
+		"parcel": "^2.10.0",
+		"stylelint": "^15.11.0",
+		"stylelint-config-prettier": "^9.0.5",
+		"stylelint-config-xo": "^0.22.0",
+		"xo": "^0.56.0"
+	},
+	"@parcel/bundler-default": {
+		"minBundles": 10000000
+	},
+	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
+	"targets": {
+		"default": {
+			"source": "source/manifest.json",
+			"distDir": "./distribution",
+			"sourceMap": false
+		}
 	},
 	"webExt": {
 		"sourceDir": "distribution",
@@ -41,9 +64,5 @@
 				"https://github.com/fregante/browser-extension-template"
 			]
 		}
-	},
- 	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
- 	"@parcel/bundler-default": {
- 		"minBundles": 10000000
- 	}
+	}
 }
