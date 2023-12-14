@@ -5,7 +5,7 @@
 [link-hfog]: https://github.com/sindresorhus/hide-files-on-github
 [link-tsconfig]: https://github.com/sindresorhus/tsconfig
 [link-options-sync]: https://github.com/fregante/webext-options-sync
-[link-cws-keys]: https://github.com/fregante/chrome-webstore-upload/blob/main/How%20to%20generate%20Google%20API%20keys.md
+[link-cws-keys]: https://github.com/fregante/chrome-webstore-upload-keys
 [link-amo-keys]: https://addons.mozilla.org/en-US/developers/addon/api/key
 
 > Cross-browser extension boilerplate - barebones template with Parcel 2, options handler and auto-publishing.
