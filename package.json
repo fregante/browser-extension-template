@@ -38,23 +38,18 @@
 		"webext-options-sync": "^4.2.1"
 	},
 	"devDependencies": {
-		"@parcel/config-webextension": "^2.10.0",
+		"@parcel/config-webextension": "^2.10.3",
 		"npm-run-all": "^4.1.5",
-		"parcel": "^2.10.0",
+		"parcel": "^2.10.3",
 		"stylelint": "^15.11.0",
 		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-config-xo": "^0.22.0",
 		"xo": "^0.56.0"
 	},
-	"@parcel/bundler-default": {
-		"minBundles": 10000000
-	},
-	"@parcel/bundler-default-bug": "https://github.com/parcel-bundler/parcel/issues/8071",
 	"targets": {
 		"default": {
 			"source": "source/manifest.json",
-			"distDir": "./distribution",
-			"sourceMap": false
+			"distDir": "./distribution"
 		}
 	},
 	"webExt": {
