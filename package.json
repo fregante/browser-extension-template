@@ -24,27 +24,23 @@
 	},
 	"stylelint": {
 		"extends": [
-			"stylelint-config-xo",
-			"stylelint-config-prettier"
+			"stylelint-config-xo"
 		],
 		"rules": {
-			"function-whitespace-after": null,
-			"media-feature-range-operator-space-after": null,
-			"media-feature-range-operator-space-before": null
 		}
 	},
 	"dependencies": {
-		"webext-base-css": "^1.4.3",
-		"webext-options-sync": "^4.2.1"
+		"webext-base-css": "^1.4.4",
+		"webext-options-sync": "^4.2.3"
 	},
 	"devDependencies": {
 		"@parcel/config-webextension": "^2.12.1-canary.3290",
 		"npm-run-all": "^4.1.5",
 		"parcel": "^2.0.0-canary.1665",
-		"stylelint": "^15.11.0",
+		"stylelint": "^16.6.1",
 		"stylelint-config-prettier": "^9.0.5",
-		"stylelint-config-xo": "^0.22.0",
-		"xo": "^0.56.0"
+		"stylelint-config-xo": "^1.0.2",
+		"xo": "^0.58.0"
 	},
 	"targets": {
 		"default": {
