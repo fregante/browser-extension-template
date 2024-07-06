@@ -16,7 +16,7 @@ Screenshot of extension options:
 
 ## Features
 
-- Uses Manifest v3 ([not yet compatible with Firefox](https://bugzilla.mozilla.org/show_bug.cgi?id=1578284))
+- Uses Manifest v3
 - Use npm dependencies thanks to Parcel 2.
 - [Auto-syncing options](#auto-syncing-options).
 - [Auto-publishing](#publishing) with auto-versioning and support for manual releases.
