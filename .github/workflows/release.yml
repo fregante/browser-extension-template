@@ -12,6 +12,8 @@ jobs:
   Version:
     outputs:
       created: ${{ env.DAILY_VERSION_CREATED }}
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
