@@ -59,8 +59,7 @@ jobs:
           CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
           REFRESH_TOKEN: ${{ secrets.REFRESH_TOKEN }}
   Firefox:
-    # Disabled until https://github.com/fregante/browser-extension-template/issues/78
-    if: needs.Version.outputs.created && false
+    if: needs.Version.outputs.created
     needs: Version
     name: Submit (Firefox)
     environment: Firefox
