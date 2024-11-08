@@ -35,12 +35,16 @@
 	},
 	"devDependencies": {
 		"@parcel/config-webextension": "^2.12.1-canary.3290",
+		"@parcel/resolver-default": "^2.0.0-canary.1735",
 		"npm-run-all": "^4.1.5",
 		"parcel": "^2.0.0-canary.1665",
 		"stylelint": "^16.6.1",
 		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-config-xo": "^1.0.2",
 		"xo": "^0.58.0"
+	},
+	"@parcel/resolver-default": {
+		"packageExports": true
 	},
 	"targets": {
 		"default": {
