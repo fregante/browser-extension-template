@@ -1,13 +1,13 @@
 {
 	"private": true,
 	"scripts": {
-		"build": "parcel build",
+		"build": "NODE_NO_WARNINGS=1 parcel build",
 		"lint": "run-p lint:*",
 		"lint-fix": "run-p 'lint:* -- --fix'",
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "parcel watch --no-hmr"
+		"watch": "NODE_NO_WARNINGS=1 parcel watch --no-hmr"
 	},
 	"browserslist": [
 		"last 1 Chrome version",
