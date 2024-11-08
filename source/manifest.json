@@ -1,4 +1,5 @@
 {
+	"$schema": "https://json.schemastore.org/chrome-manifest",
 	"name": "Awesome Extension",
 	"version": "0.0.0",
 	"description": "An awesome new browser extension",
