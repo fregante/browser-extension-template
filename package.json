@@ -29,7 +29,7 @@
 		"rules": {}
 	},
 	"dependencies": {
-		"webext-base-css": "^1.4.4",
+		"webext-base-css": "^2.0.1",
 		"webext-options-sync": "^4.2.3"
 	},
 	"devDependencies": {
