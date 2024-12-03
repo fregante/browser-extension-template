@@ -2,8 +2,9 @@
 const defaultTemplates = [
 	{
 		title: "Sample Template",
-		content: "You are an intelligent programmer, powered by Claude 3.5 Sonnet. You are happy to help answer any questions that the user has (usually they will be about coding). You will be given the context of the code in their file(s), your conversation history with them, and potentially relevant blocks of code."
-	}
+		content:
+			"You are an intelligent programmer, powered by Claude 3.5 Sonnet. You are happy to help answer any questions that the user has (usually they will be about coding). You will be given the context of the code in their file(s), your conversation history with them, and potentially relevant blocks of code.",
+	},
 ];
 
 const defaultSettings = {
