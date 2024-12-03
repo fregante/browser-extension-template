@@ -1,28 +1,56 @@
-// eslint-disable-next-line import/no-unassigned-import
-import 'webext-base-css';
-import './options.css';
-import optionsStorage from './options-storage.js';
+import { getSettings, saveSettings } from "./options-storage.js";
 
-const rangeInputs = [...document.querySelectorAll('input[type="range"][name^="color"]')];
-const numberInputs = [...document.querySelectorAll('input[type="number"][name^="color"]')];
-const output = document.querySelector('.color-output');
+// Display template list
+async function renderTemplates() {
+	const container = document.getElementById("templates-container");
+	const settings = await getSettings();
 
-function updateOutputColor() {
-	output.style.backgroundColor = `rgb(${rangeInputs[0].value}, ${rangeInputs[1].value}, ${rangeInputs[2].value})`;
+	container.innerHTML = settings.templates
+		.map(
+			(template, index) => `
+    <div class="template-item">
+      <div class="template-title">${template.title}</div>
+      <div class="template-content">${template.content}</div>
+      <div class="template-actions">
+        <button type="button" class="delete-button" data-index="${index}">Delete</button>
+      </div>
+    </div>
+  `,
+		)
+		.join("");
 }
 
-function updateInputField(event) {
-	numberInputs[rangeInputs.indexOf(event.currentTarget)].value = event.currentTarget.value;
-}
+// Add new template
+document.addEventListener("DOMContentLoaded", async () => {
+	await renderTemplates();
 
-for (const input of rangeInputs) {
-	input.addEventListener('input', updateOutputColor);
-	input.addEventListener('input', updateInputField);
-}
+	// Add form submit handler
+	document
+		.getElementById("options-form")
+		.addEventListener("submit", async (e) => {
+			e.preventDefault();
+			const title = document.getElementById("template-title").value;
+			const content = document.getElementById("template-content").value;
 
-async function init() {
-	await optionsStorage.syncForm('#options-form');
-	updateOutputColor();
-}
+			const settings = await getSettings();
+			settings.templates.push({ title, content });
+			await saveSettings(settings);
 
-init();
+			// Reset form and update list
+			e.target.reset();
+			await renderTemplates();
+		});
+
+	// Add delete button handler
+	document
+		.getElementById("templates-container")
+		.addEventListener("click", async (e) => {
+			if (e.target.classList.contains("delete-button")) {
+				const index = parseInt(e.target.dataset.index, 10);
+				const settings = await getSettings();
+				settings.templates.splice(index, 1);
+				await saveSettings(settings);
+				await renderTemplates();
+			}
+		});
+});

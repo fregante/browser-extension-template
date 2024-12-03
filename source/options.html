@@ -1,36 +1,40 @@
 <!doctype html>
-<meta charset="utf-8">
-<title>Options</title>
+<meta charset="utf-8" />
+<title>Refined Claude Settings</title>
+<link rel="stylesheet" href="options.css" />
 
 <form id="options-form" class="detail-view-container">
-	<h3>Color Picker</h3>
-	<div class="color-picker">
-		<div class="color-inputs">
-			<label class="color-input">
-				<span>R</span>
-				<input type="range" min="0" max="255" name="colorRed">
-				<input type="number" name="colorRed" min="0" max="255">
-			</label>
-			<label class="color-input">
-				<span>G</span>
-				<input type="range" min="0" max="255" name="colorGreen">
-				<input type="number" name="colorGreen" min="0" max="255">
-			</label>
-			<label class="color-input">
-				<span>B</span>
-				<input type="range" min="0" max="255" name="colorBlue">
-				<input type="number" name="colorBlue" min="0" max="255">
+	<h1>Refined Claude Settings</h1>
+
+	<section>
+		<h2>Settings</h2>
+		<div class="row">
+			<label>
+				<input type="checkbox" name="useCtrlEnterToSend" />
+				Use Ctrl+Enter to send messages
 			</label>
 		</div>
-		<div class="color-output"></div>
-	</div>
-	<h3>Notice Content</h3>
-	<div class="text-inputs">
-		<label class="text-input">
-			<span>Text</span>
-			<input type="text" name="text">
-		</label>
-	</div>
+	</section>
+
+	<section>
+		<h2>Templates</h2>
+
+		<!-- Template input form -->
+		<div class="row">
+			<label for="template-title">Title</label>
+			<input type="text" id="template-title" name="title" required />
+		</div>
+		<div class="row">
+			<label for="template-content">Content</label>
+			<textarea id="template-content" name="content" rows="4" required></textarea>
+		</div>
+		<div class="row">
+			<button type="submit" class="browser-style">Add Template</button>
+		</div>
+
+		<!-- Template list -->
+		<div id="templates-container"></div>
+	</section>
 </form>
 
 <script src="options.js" type="module"></script>

@@ -1,66 +1,30 @@
-html {
-	min-width: 550px;
-	overflow-x: hidden; /* Required to hide horizontal scroll on Firefox */
+.template-item {
+	border: 1px solid var(--in-content-box-border-color);
+	border-radius: 2px;
+	padding: 1em;
+	margin: 1em 0;
 }
 
-/* For use with screen readers */
-.sr-only {
-	display: none;
+.template-content {
+	font-size: 0.9em;
+	color: var(--in-content-deemphasized-text);
+	margin: 0.5em 0;
+	white-space: pre-wrap;
 }
 
-/* Hide spinbox for number inputs */
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-	-webkit-appearance: none;
-	margin: 0;
-}
-
-input[type='number'] {
-	-moz-appearance: textfield;
-}
-
-input[type='number'],
-input[type='text'] {
-	padding: 0.25rem 0.375rem;
-}
-
-.color-picker {
+.template-actions {
 	display: flex;
+	gap: 0.5em;
 }
 
-.color-inputs {
-	flex: 1;
+.delete-button {
+	background: var(--in-content-button-background);
+	color: var(--in-content-text-color);
+	border: 1px solid var(--in-content-box-border-color);
+	padding: 0.25em 0.5em;
+	border-radius: 2px;
 }
 
-.color-input {
-	display: flex;
-	padding: 0.25rem;
-	align-items: center;
-}
-
-.color-input input[type='range'] {
-	flex: 1;
-	margin: 0 0.5rem;
-}
-
-.color-input input[type='number'] {
-	width: calc(3ch + 1rem);
-}
-
-.color-output {
-	width: 86px;
-	height: 86px;
-	margin: 0.5rem;
-}
-
-/* Firefox only */
-.only-firefox {
-	display: none;
-}
-
-/* stylelint-disable-next-line  at-rule-no-vendor-prefix */
-@-moz-document url-prefix('') {
-	.only-firefox {
-		display: block;
-	}
+.delete-button:hover {
+	background: var(--in-content-button-background-hover);
 }
