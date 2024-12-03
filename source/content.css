@@ -1,8 +1,21 @@
-#text-notice {
-	position: fixed;
-	top: 10px;
-	left: 10px;
-	padding: 10px;
-	background: #fff;
-	z-index: 999999;
+/* Template dropdown styles */
+.template-dropdown {
+	padding: 4px;
+	background: var(--bg-000, white);
+}
+
+.template-item {
+	border-radius: 4px;
+	transition: background-color 0.2s;
+}
+
+.template-item:hover {
+	background-color: var(--bg-100, #f3f4f6);
+}
+
+.line-clamp-2 {
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 }

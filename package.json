@@ -1,5 +1,7 @@
 {
 	"private": true,
+	"name": "refined-claude",
+	"version": "0.0.1",
 	"scripts": {
 		"build": "NODE_NO_WARNINGS=1 parcel build",
 		"lint": "run-p lint:*",
@@ -7,7 +9,9 @@
 		"lint:css": "stylelint source/**/*.css",
 		"lint:js": "xo",
 		"test": "run-p lint:* build",
-		"watch": "NODE_NO_WARNINGS=1 parcel watch --no-hmr"
+		"watch": "NODE_NO_WARNINGS=1 parcel watch --no-hmr",
+		"format:write": "prettier --write .",
+		"format:check": "prettier --check ."
 	},
 	"browserslist": [
 		"last 1 Chrome version",
@@ -37,6 +41,7 @@
 		"@parcel/resolver-default": "^2.13.0",
 		"npm-run-all2": "^7.0.1",
 		"parcel": "^2.13.0",
+		"prettier": "3.4.1",
 		"stylelint": "^16.6.1",
 		"stylelint-config-prettier": "^9.0.5",
 		"stylelint-config-xo": "^1.0.2",
@@ -55,7 +60,7 @@
 		"sourceDir": "distribution",
 		"run": {
 			"startUrl": [
-				"https://github.com/fregante/browser-extension-template"
+				"https://claude.ai/"
 			]
 		}
 	}

@@ -1,3 +1,5 @@
+# Refined Claude
+
 # browser-extension-template
 
 [link-rgh]: https://github.com/sindresorhus/refined-github
