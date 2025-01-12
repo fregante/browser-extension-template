@@ -24,6 +24,9 @@ jobs:
           rm -f \
             .github/funding.yml \
             .github/workflows/template-cleanup.yml
+
+          # Remove the Extensions created using this template section
+          sed -i '/## Extensions created using this template/,/## License/{/## License/!d}' readme.md
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Template cleanup
