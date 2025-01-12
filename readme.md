@@ -109,6 +109,7 @@ Extension icon made by [Freepik](https://www.freepik.com) from [www.flaticon.com
 ## Extensions created using this template
 
 - [notlmn/copy-as-markdown](https://github.com/notlmn/copy-as-markdown) - Browser extension to copy hyperlinks, images, and selected text as Markdown.
+- [BenMatase/chainlink-extension](https://github.com/BenMatase/chainlink-extension) - Browser extension which helps navigating trees of Github PRs.
 
 ## License
 
